@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @vite('resources/css/app.css')
-</head>
+@section('title', 'Brewtique')
 
-<body class="bg-bgPrimary">
-    <!--Mao Ning Landing Page nato gois-->
-    Home Page?
-</body>
-
-</html>
+@section('content')
+    <!--Diri ang Contents-->
+@endsection

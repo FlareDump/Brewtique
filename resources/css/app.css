@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap");
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -9,6 +10,8 @@
     --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
+    --font-TitleFont: "Inknut Antiqua", serif;
+    --font-Primary: "DM Sans", serif;
     --color-bgPrimary: #fff1db;
     --color-bgSecondary: #4c280a;
     --color-txtPrimary: #ffffff;
@@ -18,4 +21,6 @@
     --color-icon: #dfaa5b;
     --color-btnColor: #f1b963;
     --color-btnColor2: #e19517;
+    --color-txtExtra: #524242;
+    --color-colorExtra: #ffecc9;
 }
