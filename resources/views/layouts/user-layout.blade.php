@@ -15,7 +15,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-bgPrimary mx-5 my-5 md:mx-16 md:my-14 lg:mx-28 lg:my-24">
+<body class="bg-bgPrimary">
 
 </body>
 

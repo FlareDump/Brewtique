@@ -11,7 +11,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    rel="stylesheet">
     <title>@yield('title')</title>
     @vite('resources/css/app.css')
 </head>
@@ -22,6 +21,7 @@
         @yield('content')
     </div>
 
+    <script src="https://kit.fontawesome.com/cce20cf791.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
