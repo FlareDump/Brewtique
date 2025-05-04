@@ -26,7 +26,7 @@
             <h1 class="font-TitleFont text-txtTertiary text-lg font-black">Brewtique</h1>
         </a>
         <div class="flex items-center justify-center pr-5">
-            <button id="burger" onclick="toggleMenu()">
+            <button id="burger">
                 <i id="menu-icon" class="fa-solid fa-bars fa-2xl"></i>
             </button>
         </div>
@@ -42,21 +42,4 @@
     </ul>
 </div>
 
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById('menu');
-        const menuIcon = document.getElementById('menu-icon');
-
-        // Toggle the visibility of the menu
-        menu.classList.toggle('hidden');
-
-        // Toggle the icon class
-        if (menu.classList.contains('hidden')) {
-            menuIcon.classList.remove('fa-x', 'fa-2xl');
-            menuIcon.classList.add('fa-bars', 'fa-2xl');
-        } else {
-            menuIcon.classList.remove('fa-bars', 'fa-2xl');
-            menuIcon.classList.add('fa-x', 'fa-2xl');
-        }
-    }
-</script>
+@vite('resources/js/app.js')
