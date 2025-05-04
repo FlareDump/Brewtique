@@ -26,17 +26,37 @@
             <h1 class="font-TitleFont text-txtTertiary text-lg font-black">Brewtique</h1>
         </a>
         <div class="flex items-center justify-center pr-5">
-            <button popovertarget="menu" id="burger"><i class="fa-solid fa-bars fa-2xl"></i></button>
+            <button id="burger" onclick="toggleMenu()">
+                <i id="menu-icon" class="fa-solid fa-bars fa-2xl"></i>
+            </button>
         </div>
     </div>
 </nav>
 
-<div popover anchor="burger" id="menu"
-    class="inset-0 my-4 translate-x-[-50%] [left:anchor(left)] [top:anchor(bottom)]">
-    <ul class="font-Primary text-txtTertiary flex-col gap-y-10 p-2 text-[16px] font-black">
+<div id="menu" class="absolute right-5 top-16 z-50 hidden w-48 rounded-lg bg-white p-4 shadow-lg">
+    <ul class="font-Primary text-txtTertiary flex flex-col gap-y-4 text-center text-[16px] font-black">
         <li><a href="#">Home</a></li>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Products</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 </div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        // Toggle the visibility of the menu
+        menu.classList.toggle('hidden');
+
+        // Toggle the icon class
+        if (menu.classList.contains('hidden')) {
+            menuIcon.classList.remove('fa-x', 'fa-2xl');
+            menuIcon.classList.add('fa-bars', 'fa-2xl');
+        } else {
+            menuIcon.classList.remove('fa-bars', 'fa-2xl');
+            menuIcon.classList.add('fa-x', 'fa-2xl');
+        }
+    }
+</script>
