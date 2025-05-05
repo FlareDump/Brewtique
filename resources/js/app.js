@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuIcon = document.getElementById("menu-icon");
     const burgerButton = document.getElementById("burger");
 
-    burgerButton.addEventListener("clickb ", () => {
+    burgerButton.addEventListener("click", () => {
         // Toggle the visibility of the menu
         menu.classList.toggle("hidden");
 

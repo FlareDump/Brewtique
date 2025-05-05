@@ -26,7 +26,7 @@
             <h1 class="font-TitleFont text-txtTertiary text-lg font-black">Brewtique</h1>
         </a>
         <div class="flex items-center justify-center pr-5">
-            <button id="burger">
+            <button id="burger" onclick="toggleMenu()">
                 <i id="menu-icon" class="fa-solid fa-bars fa-2xl"></i>
             </button>
         </div>
