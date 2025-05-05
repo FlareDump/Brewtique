@@ -13,4 +13,8 @@ class PageController extends Controller
     public function signin(){
         return view('pages.signin');
     }
+
+    public function login(){
+        return view('pages.login');
+    }
 }

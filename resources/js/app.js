@@ -1,11 +1,12 @@
 import "./bootstrap";
 
+//Burger menu toggle
 document.addEventListener("DOMContentLoaded", () => {
     const menu = document.getElementById("menu");
     const menuIcon = document.getElementById("menu-icon");
     const burgerButton = document.getElementById("burger");
 
-    burgerButton.addEventListener("click", () => {
+    burgerButton.addEventListener("clickb ", () => {
         // Toggle the visibility of the menu
         menu.classList.toggle("hidden");
 

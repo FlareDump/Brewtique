@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::get('/Home', [PageController::class, 'welcome']);
 Route::get('/SignIn', [PageController::class, 'signin']);
+Route::get('/Login', [PageController::class, 'login']);
