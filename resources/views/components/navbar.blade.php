@@ -9,14 +9,17 @@
             </a>
         </div>
         <ul class="font-Primary text-txtTertiary text-[16px] font-black md:flex md:gap-x-10 lg:flex lg:gap-x-20">
-            <li class="font-p"><a href="#">Home</a></li>
+            <li><a href="/Home">Home</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="#">Products</a></li>
+            <li><a href="/Products">Products</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-        <button class="border-txtTertiary text-txtTertiary rounded-lg border px-12 py-0.5 font-bold md:flex lg:flex">
-            Login
-        </button>
+        <a href="/Login">
+            <button
+                class="border-txtTertiary text-txtTertiary rounded-lg border px-12 py-0.5 font-bold md:flex lg:flex">
+                Login
+            </button>
+        </a>
     </div>
 
     <!--Small Screen-->
@@ -35,10 +38,11 @@
 
 <div id="menu" class="absolute right-5 top-16 z-50 hidden w-48 rounded-lg bg-white p-4 shadow-lg">
     <ul class="font-Primary text-txtTertiary flex flex-col gap-y-4 text-center text-[16px] font-black">
-        <li><a href="#">Home</a></li>
+        <li><a href="/Home">Home</a></li>
         <li><a href="#">About Us</a></li>
-        <li><a href="#">Products</a></li>
+        <li><a href="/Products">Products</a></li>
         <li><a href="#">Contact</a></li>
+        <li class="mt-5"><a href="/Login">Login</a></li>
     </ul>
 </div>
 

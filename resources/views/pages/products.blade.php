@@ -7,8 +7,6 @@
     @include('components.navbar')
 @endauth
 
-@section('title', 'Brewtique')
+@section('title', 'Brewtique - Hot Drinks')
 
-@section('content')
-
-@endsection
+@extends('layouts.products-hotdrinks')

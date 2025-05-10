@@ -15,9 +15,9 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-bgPrimary">
+<body class="bg-bgPrimary w-full">
 
-    <div class="container">
+    <div class="container w-full">
         @yield('content')
     </div>
 
