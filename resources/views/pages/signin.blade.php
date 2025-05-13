@@ -10,7 +10,7 @@
             <div class="bg-txtPrimary w-1/2 rounded-lg px-10 py-10">
                 <!-- Logo and Title -->
                 <div class="flex items-center justify-center gap-3.5">
-                    <img src="./icons/brewtique-user-icon.png" alt="brewtique-icon">
+                    <img src="{{ asset('icons/brewtique-user-icon.png') }}" alt="brewtique-icon">
                     <h1 class="font-TitleFont text-xl font-black">Brewtique</h1>
                 </div>
                 <div>
@@ -79,7 +79,7 @@
                         <!-- Google Login Button -->
                         <button
                             class="border-txtTertiary flex flex-row items-center justify-center gap-2.5 rounded-sm border px-2.5 py-1 text-xs">
-                            <img src="./icons/google-icon.svg" alt="Google">
+                            <img src="{{ asset('icons/google-icon.svg') }}" alt="Google">
                             Continue with Google
                         </button>
 
@@ -92,7 +92,7 @@
 
             <!-- Right Section: Image -->
             <div class="bg-icon rounded-tb-lg flex w-1/2 items-center justify-center rounded-r-lg rounded-bl-[250px]">
-                <img src="./images/Kape 1.png" alt="" class="lg:size-128 md:size-86">
+                <img src="{{ asset('images/Coffee 1.png') }}" alt="" class="lg:size-128 md:size-86">
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
         <div class="bg-icon flex flex-row rounded-lg">
             <!-- Left Section -->
             <div class="flex w-[40%] items-center justify-center">
-                <img src="./images/kape 2.png" alt="kape" class="md:size-86 lg:size-128">
+                <img src="{{ asset('images/Coffee 2.svg') }}" alt="kape" class="md:size-86 lg:size-128">
             </div>
 
             <!-- Right Section -->
@@ -16,15 +16,15 @@
                 <div>
                     <!-- Logo, Title, and Greeting -->
                     <div class="flex items-center justify-center gap-3.5">
-                        <img src="./icons/brewtique-user-icon.png" alt="brewtique-icon">
+                        <img src="{{ asset('icons/brewtique-user-icon.png') }}" alt="brewtique-icon">
                         <h1 class="font-TitleFont text-xl font-black">Brewtique</h1>
                     </div>
                     <div>
                         <h2 class="font-Primary text-txtExtra text-4xl font-black">
                             “Good to See You Again!
                         </h2>
-                        <p>
-                            The coffee’s fresh, and your seat is saved. Time to pick up where you left off!"
+                        <p></p>
+                        The coffee’s fresh, and your seat is saved. Time to pick up where you left off!"
                         </p>
                     </div>
                     <!-- Form Section -->
@@ -63,7 +63,6 @@
 
                             <!-- Remember Me and Forgot Password Section -->
                             <div class="text-txtExtra flex flex-row justify-between px-5 py-2.5">
-                                @csrf
                                 <div class="flex flex-row items-center gap-2">
                                     <!-- Remember Me Checkbox -->
                                     <input type="checkbox"
@@ -79,8 +78,6 @@
 
                             <!-- Login Button and Alternative Login Options -->
                             <div class="flex flex-col items-center justify-center gap-2.5">
-                                @csrf
-
                                 <!-- Login Button -->
                                 <button
                                     class="bg-btnColor font-Primary text-txtPrimary px-17 rounded-sm py-1 text-lg">Login</button>
@@ -95,7 +92,7 @@
                                 <!-- Google Login Button -->
                                 <button
                                     class="border-txtTertiary flex flex-row items-center justify-center gap-2.5 rounded-sm border px-2.5 py-1 text-xs">
-                                    <img src="./icons/google-icon.svg" alt="Google">
+                                    <img src="{{ asset('icons/google-icon.svg') }}" alt="Google">
                                     Continue with Google
                                 </button>
 

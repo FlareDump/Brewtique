@@ -1,10 +1,10 @@
 <script src="https://kit.fontawesome.com/cce20cf791.js" crossorigin="anonymous"></script>
-<nav>
+<nav class="bg-bgPrimary fixed z-50 w-full shadow-md">
     <!--Large and Medium Screen-->
     <div class="hidden items-center justify-around md:flex lg:flex">
         <div class="hidden md:flex lg:flex">
             <a href="/Home" class="flex items-center">
-                <img src="./icons/brewtique-logo.png" alt="brewtique">
+                <img src="{{ asset('icons/brewtique-logo.png') }}" alt="brewtique">
                 <h1 class="font-TitleFont text-txtTertiary text-lg font-black">Brewtique</h1>
             </a>
         </div>
@@ -25,7 +25,7 @@
     <!--Small Screen-->
     <div class="align-center flex justify-between md:hidden lg:hidden">
         <a href="/Home" class="flex items-center">
-            <img src="./icons/brewtique-logo.png" alt="brewtique">
+            <img src="{{ asset('icons/brewtique-logo.png') }}" alt="brewtique">
             <h1 class="font-TitleFont text-txtTertiary text-lg font-black">Brewtique</h1>
         </a>
         <div class="flex items-center justify-center pr-5">

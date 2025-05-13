@@ -2,11 +2,11 @@
 <link rel="icon" href="./icons/brewtique-icon.png">
 
 @auth
-    @include('components.logged-navbar')
+    @include('components.logged_navbar')
 @else
     @include('components.navbar')
 @endauth
 
 @section('title', 'Brewtique - Hot Drinks')
 
-@extends('layouts.products-hotdrinks')
+@extends('layouts.products_hotdrinks')

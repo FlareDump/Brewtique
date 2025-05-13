@@ -2,13 +2,17 @@
 <link rel="icon" href="./icons/brewtique-icon.png">
 
 @auth
-    @include('components.logged-navbar')
+    @include('components.logged_navbar')
 @else
     @include('components.navbar')
 @endauth
 
 @section('title', 'Brewtique')
 
-@section('content')
+@include('layouts.hero_section')
+@include('layouts.aboutus_section')
+@include('layouts.promo_section')
 
-@endsection
+<div id="promoModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/50">
+    @include('components.promo')
+</div>

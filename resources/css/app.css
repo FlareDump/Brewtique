@@ -17,10 +17,21 @@
     --color-txtPrimary: #ffffff;
     --color-txtSecondary: #4c280a;
     --color-txtTertiary: #000000;
+    --color-txtSubText: #ad8a68;
     --color-txtHighlighted: #d78325;
     --color-icon: #dfaa5b;
     --color-btnColor: #f1b963;
     --color-btnColor2: #e19517;
     --color-txtExtra: #524242;
     --color-colorExtra: #ffecc9;
+}
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
