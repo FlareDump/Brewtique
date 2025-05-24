@@ -11,6 +11,7 @@
 
 @include('layouts.hero_section')
 @include('layouts.aboutus_section')
+@include('layouts.best_sellers_section')
 @include('layouts.promo_section')
 
 <div id="promoModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/50">
