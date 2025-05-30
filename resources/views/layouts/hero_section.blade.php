@@ -11,7 +11,8 @@
                 well-earned break, we serve perfection. One brew at a time.
             </p>
             <div class="lg:flex-start flex w-full items-center justify-center md:justify-center lg:justify-start">
-                <button class="text-txtPrimary bg-btnColor font-Primary rounded-lg px-7 py-1 text-lg font-black">
+                <button
+                    class="text-txtPrimary bg-btnColor font-Primary hover:bg-btnColor2 rounded-lg px-7 py-1 text-lg font-black transition-colors duration-200 hover:scale-105 hover:shadow-xl">
                     Order Now
                 </button>
             </div>

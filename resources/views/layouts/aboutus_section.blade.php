@@ -43,13 +43,15 @@
                 <h1 class="font-TitleFont text-txtSecondary text-4xl font-bold">About Us</h1>
             </div>
             <div>
-                <p class="text-txtExtra mt-4 text-center text-lg md:text-left lg:mr-20">
+                <p class="text-txtExtra mt-4 text-justify text-lg md:text-justify lg:mr-20">
                     Brewtique is a coffee shop that offers a unique and personalized experience for coffee lovers. Our
                     mission is to provide high-quality coffee and create a welcoming environment where customers can
                     relax, socialize, and enjoy their favorite brews.
                 </p>
-                <p class="text-txtExtra mt-4 text-center text-lg md:text-left">
-                    We take pride in sourcing the finest beans from around the world and
+                <p class="text-txtExtra mt-4 text-justify text-lg md:text-justify lg:mr-20">
+                    At Brewtique, it's not just about the coffee—it's about community. Our cozy, thoughtfully designed
+                    space invites you to stay a while, connect with friends, or find inspiration in a quiet moment.
+                    We're passionate about what we do, and we’re here to share that passion with you—one cup at a time.
                 </p>
             </div>
         </div>

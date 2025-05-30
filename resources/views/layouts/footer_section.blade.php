@@ -46,16 +46,17 @@
             </div>
         </div>
     </div>
-    <div class="text-txtPrimary bg-txtSecondary flex justify-around py-5">
+    <div
+        class="text-txtPrimary bg-txtSecondary flex flex-col items-center gap-4 py-5 md:flex-row md:justify-between md:px-10">
         <div>
-            <ul class="flex gap-20 font-bold">
-                <li>&#x2117 2025 Brewtique. All rights reserve</li>
+            <ul class="flex flex-col items-center gap-5 font-bold md:flex-row md:gap-20">
+                <li>&#x2117; 2025 Brewtique. All rights reserve</li>
                 <li>Products</li>
                 <li>About Us</li>
             </ul>
         </div>
         <div>
-            <ul class="flex gap-5">
+            <ul class="flex justify-center gap-5 md:justify-end">
                 <li>
                     <i class="fa-brands fa-instagram fa-2xl"></i>
                 </li>

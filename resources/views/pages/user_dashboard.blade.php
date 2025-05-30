@@ -8,20 +8,50 @@
 
 @section('title', 'User Dashboard')
 <section class="font-Primary flex min-h-screen flex-col justify-between py-10">
-    <div class="h-100 w-full px-10">
-        <div class="grid grid-cols-5 grid-rows-1 gap-4">
-            <div class="bg-bgColor flex flex-col gap-40 rounded-md p-5 shadow-sm">
-                <ul class="flex flex-col gap-5 p-5">
-                    <li>Sample Text</li>
-                    <li>Sample Text</li>
-                    <li>Sample Text</li>
-                    <li>Sample Text</li>
-                    <li>Sample Text</li>
+    <div class="h-100 py-15 w-full px-10">
+        <div class="grid grid-cols-6 grid-rows-1 gap-4">
+            <div class="bg-bgColor flex h-full min-h-[600px] flex-col justify-between rounded-md p-5 shadow-sm">
+                <ul class="flex flex-col gap-3 p-2">
+                    <li>
+                        <a href="/Dashboard/User"
+                            class="text-txtSecondary bg-txtHighlighted/80 hover:bg-txtHighlighted flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
+                            <i class="fa-regular fa-user text-2xl"></i>
+                            My Account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Dashboard/Order-History"
+                            class="text-txtSecondary hover:bg-txtHighlighted/40 flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
+                            <i class="fa-solid fa-mug-hot text-2xl"></i>
+                            Order History
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="text-txtSecondary hover:bg-txtHighlighted/40 flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
+                            <i class="fa-solid fa-bag-shopping text-2xl"></i>
+                            My Bag
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="text-txtSecondary hover:bg-txtHighlighted/40 flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
+                            <i class="fa-regular fa-bell text-2xl"></i>
+                            Notifications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="text-txtSecondary hover:bg-txtHighlighted/40 flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
+                            <i class="fa-solid fa-ticket text-2xl"></i>
+                            Vouchers
+                        </a>
+                    </li>
                 </ul>
-
                 <div class="flex">
                     <button
-                        class="bg-txtHighlighted text-txtPrimary hover:bg-txtSecondary rounded-md px-10 py-1 transition-all duration-200">
+                        class="bg-txtHighlighted hover:bg-txtSecondary flex w-full items-center gap-3 rounded-md px-6 py-2 text-lg font-medium text-white transition">
+                        <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i>
                         Logout
                     </button>
                 </div>
@@ -94,7 +124,41 @@
                 </form>
             </div>
 
-            <div class="bg-bgColor col-start-5 rounded-md shadow-sm">3</div>
+            <div
+                class="bg-bgColor col-span-2 col-start-5 flex h-full min-h-[600px] flex-col justify-between rounded-md p-5 shadow-sm">
+                <!-- Header -->
+                <div class="mb-4 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-2xl"></i>
+                        <span class="text-xl font-bold">Your Bag</span>
+                    </div>
+                    <a href="#" class="text-txtSecondary text-sm font-medium hover:underline">View More..</a>
+                </div>
+                <!-- Bag Item Card -->
+                <div class="bg-txtHighlighted/30 mb-8 flex items-center gap-4 rounded-xl p-3">
+                    <img src="/images/best_seller1.png" alt="Mocha Vanilla Frappe"
+                        class="h-16 w-16 rounded-lg object-cover">
+                    <div class="flex flex-1 flex-col">
+                        <span class="text-txtSecondary font-bold leading-tight">Mocha Vanilla</span>
+                        <span class="text-txtSecondary text-sm leading-tight">Frappe</span>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <span class="text-txtHighlighted text-lg font-bold">₱150.00</span>
+                        <span class="text-txtSecondary text-xs">1x</span>
+                    </div>
+                </div>
+                <!-- Spacer -->
+                <div class="flex-1"></div>
+                <!-- Total and Checkout -->
+                <div class="mt-4">
+                    <div class="border-txtSecondary/40 mb-2 flex items-center justify-between border-t pt-4">
+                        <span class="text-lg font-bold">Total</span>
+                        <span class="text-txtHighlighted text-lg font-bold">₱150.00</span>
+                    </div>
+                    <button
+                        class="bg-txtHighlighted hover:bg-txtSecondary mt-2 w-full rounded-md py-2 text-lg font-medium text-white transition">Checkout</button>
+                </div>
+            </div>
         </div>
     </div>
 </section>

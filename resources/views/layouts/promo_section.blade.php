@@ -33,7 +33,7 @@
 
         <!-- Promo Button -->
         <button onclick="document.getElementById('promoModal').classList.remove('hidden')"
-            class="bg-btnColor2 text-txtPrimary font-Primary inline-block rounded-lg px-4 py-2 text-xs font-bold shadow-md transition duration-300 sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base">
+            class="bg-btnColor2 text-txtPrimary font-Primary hover:bg-btnColor inline-block rounded-lg px-4 py-2 text-xs font-bold shadow-md transition duration-300 hover:scale-105 hover:shadow-xl sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base">
             View Promo
         </button>
     </div>

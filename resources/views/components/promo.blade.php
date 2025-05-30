@@ -1,9 +1,9 @@
 <!-- Promo Modal -->
-<div class="no-scrollbar no-scrollbar h-[622px] w-[1080px] overflow-y-auto rounded-lg bg-white shadow-lg">
-
+<div
+    class="no-scrollbar m-2 flex h-auto max-h-[95vh] w-[99vw] max-w-[1280px] flex-col justify-between overflow-y-auto rounded-lg bg-white shadow-lg sm:m-8">
     <!-- Navbar modal with closing button -->
     <div
-        class="bg-bgPrimary rou fixed z-40 flex w-full max-w-[1080px] items-center justify-between rounded-t-lg p-4 px-10 shadow-lg">
+        class="bg-bgPrimary sticky top-0 z-40 flex w-full items-center justify-between rounded-t-lg p-4 px-10 shadow-lg">
         <div class="flex items-center">
             <a href="/Home" class="flex items-center">
                 <img src="./icons/brewtique-logo.png" alt="brewtique" class="h-8">
@@ -16,9 +16,8 @@
         </button>
     </div>
     <!-- Promo Content -->
-    <div class="flex h-[50vh] items-center justify-center bg-cover bg-center px-4 text-center sm:h-[64vh] md:h-[96vh]"
+    <div class="flex min-h-[45vh] items-center justify-center bg-cover bg-center px-4 text-center sm:min-h-[55vh] md:min-h-[65vh]"
         style="background-image: linear-gradient(rgba(76, 40, 10, 0.3), rgba(76, 40, 10, 0.3)), url('{{ asset('images/coffeepromobg.png') }}')">
-
         <div class="mx-auto max-w-4xl">
             <h1 class="font-title text-txtPrimary mb-2 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-5xl">Brew
                 More, Pay Less</h1>
@@ -26,10 +25,10 @@
                 for you</p>
         </div>
     </div>
-
     <main class="container mx-auto px-4 py-8 sm:px-6 sm:py-12">
         <!-- Main Card -->
-        <div class="bg-colorExtra mb-8 flex flex-col rounded-lg shadow-md sm:mb-12 md:flex-row">
+        <div
+            class="bg-colorExtra sm:hover:bg-btnColor/20 mb-8 flex flex-col rounded-lg shadow-md transition-all duration-300 sm:mb-12 sm:hover:scale-105 sm:hover:shadow-xl md:flex-row">
             <img src="{{ asset('images/coffeespecial.png') }}"
                 class="h-48 w-full rounded-t-lg object-cover sm:h-64 md:h-auto md:w-1/2 md:rounded-l-lg md:rounded-tr-none">
             <div class="p-4 sm:p-6 md:w-1/2 md:p-8">
@@ -54,7 +53,8 @@
 
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3">
             <!-- Promo 1 -->
-            <div class="bg-colorExtra rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
+            <div
+                class="bg-colorExtra sm:hover:bg-btnColor/20 rounded-lg shadow-md transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-xl">
                 <img src="{{ asset('images/promo1.png') }}" class="h-40 w-full rounded-t-lg object-cover sm:h-48">
                 <div class="p-4 sm:p-6">
                     <div class="mb-2 flex justify-between">
@@ -70,7 +70,8 @@
             </div>
 
             <!-- Promo 2 -->
-            <div class="bg-colorExtra rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
+            <div
+                class="bg-colorExtra sm:hover:bg-btnColor/20 rounded-lg shadow-md transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-xl">
                 <img src="{{ asset('images/promo2.png') }}" class="h-40 w-full rounded-t-lg object-cover sm:h-48">
                 <div class="p-4 sm:p-6">
                     <div class="mb-2 flex justify-between">
@@ -87,7 +88,8 @@
             </div>
 
             <!-- Promo 3 -->
-            <div class="bg-colorExtra rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
+            <div
+                class="bg-colorExtra sm:hover:bg-btnColor/20 rounded-lg shadow-md transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-xl">
                 <img src="{{ asset('images/promo3.png') }}" class="h-40 w-full rounded-t-lg object-cover sm:h-48">
                 <div class="p-4 sm:p-6">
                     <div class="mb-2 flex justify-between">

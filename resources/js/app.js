@@ -50,4 +50,26 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    // User menu toggle for small screens
+    const userMenuMobileBtn = document.getElementById("user-menu-mobile-btn");
+    const userMenuMobile = document.getElementById("user-menu-mobile");
+    const userMenuMobileOverlay = document.getElementById("user-menu-mobile-overlay");
+
+    if (userMenuMobileBtn && userMenuMobile) {
+        userMenuMobileBtn.addEventListener("click", () => {
+            userMenuMobile.style.display = userMenuMobile.style.display === "flex" ? "none" : "flex";
+            if (userMenuMobile.style.display === "flex") {
+                userMenuMobile.classList.add("items-center", "justify-center");
+            } else {
+                userMenuMobile.classList.remove("items-center", "justify-center");
+            }
+        });
+    }
+    if (userMenuMobileOverlay && userMenuMobile) {
+        userMenuMobileOverlay.addEventListener("click", () => {
+            userMenuMobile.style.display = "none";
+            userMenuMobile.classList.remove("items-center", "justify-center");
+        });
+    }
 });
