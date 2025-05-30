@@ -1,6 +1,6 @@
-<section class="h-screen">
-    <div class="flex h-screen flex-row items-center justify-center">
-        <div class="flex flex-1 justify-center">
+<section class="min-h-screen py-10">
+    <div class="flex min-h-screen flex-col items-center justify-center md:flex-row lg:flex-row">
+        <div class="mb-8 flex flex-1 justify-center md:mb-0">
             <div x-data="{
                 images: [
                     '{{ asset('images/Coffee 1.png') }}',
@@ -38,17 +38,17 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-1 flex-col justify-center gap-4 align-middle">
-            <div class="flex items-start">
+        <div class="flex flex-1 flex-col justify-center gap-4 px-4 text-center align-middle sm:px-8 md:text-left">
+            <div class="flex items-start justify-center md:items-start md:justify-start">
                 <h1 class="font-TitleFont text-txtSecondary text-4xl font-bold">About Us</h1>
             </div>
             <div>
-                <p class="text-txtExtra mt-4 text-justify text-lg lg:mr-20">
+                <p class="text-txtExtra mt-4 text-center text-lg md:text-left lg:mr-20">
                     Brewtique is a coffee shop that offers a unique and personalized experience for coffee lovers. Our
                     mission is to provide high-quality coffee and create a welcoming environment where customers can
                     relax, socialize, and enjoy their favorite brews.
                 </p>
-                <p class="text-txtExtra mt-4 text-lg">
+                <p class="text-txtExtra mt-4 text-center text-lg md:text-left">
                     We take pride in sourcing the finest beans from around the world and
                 </p>
             </div>

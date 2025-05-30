@@ -5,28 +5,49 @@ document.addEventListener("DOMContentLoaded", () => {
     const menu = document.getElementById("menu");
     const menuIcon = document.getElementById("menu-icon");
     const burgerButton = document.getElementById("burger");
+    const overlay = document.getElementById("menu-overlay");
 
-    burgerButton.addEventListener("click", () => {
-        // Toggle the visibility of the menu
-        menu.classList.toggle("hidden");
+    if (burgerButton && menu && menuIcon) {
+        burgerButton.addEventListener("click", () => {
+            // Toggle the menu display
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+                menu.classList.remove("items-center", "justify-center");
+                menuIcon.classList.remove("fa-x");
+                menuIcon.classList.add("fa-bars");
+            } else {
+                menu.style.display = "flex";
+                menu.classList.add("items-center", "justify-center");
+                menuIcon.classList.remove("fa-bars");
+                menuIcon.classList.add("fa-x");
+            }
+        });
+    }
+    // Close menu when clicking overlay
+    if (overlay && menu && menuIcon) {
+        overlay.addEventListener("click", () => {
+            menu.style.display = "none";
+            menu.classList.remove("items-center", "justify-center");
+            menuIcon.classList.remove("fa-x");
+            menuIcon.classList.add("fa-bars");
+        });
+    }
 
-        // Toggle the icon class
-        if (menu.classList.contains("hidden")) {
-            menuIcon.classList.remove("fa-x", "fa-2xl");
-            menuIcon.classList.add("fa-bars", "fa-2xl");
-        } else {
-            menuIcon.classList.remove("fa-bars", "fa-2xl");
-            menuIcon.classList.add("fa-x", "fa-2xl");
-        }
-    });
-});
-
-// User menu toggle
-document.addEventListener("DOMContentLoaded", () => {
+    // User menu toggle
     const userMenuButton = document.getElementById("user-menu-button");
     const userMenu = document.getElementById("user-menu");
+    if (userMenuButton && userMenu) {
+        userMenuButton.addEventListener("click", () => {
+            userMenu.classList.toggle("hidden");
+        });
+    }
 
-    userMenuButton.addEventListener("click", () => {
-        userMenu.classList.toggle("hidden");
+    // Close large screen dropdown when clicking outside
+    document.addEventListener("mousedown", function(event) {
+        if (userMenu && !userMenu.classList.contains("hidden")) {
+            if (!userMenu.contains(event.target) && !userMenuButton.contains(event.target)) {
+                userMenu.classList.add("hidden");
+            }
+        }
     });
 });

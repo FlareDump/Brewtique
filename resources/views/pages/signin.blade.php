@@ -10,7 +10,9 @@
             <div class="bg-txtPrimary w-1/2 rounded-lg px-10 py-10">
                 <!-- Logo and Title -->
                 <div class="flex items-center justify-center gap-3.5">
-                    <img src="{{ asset('icons/brewtique-user-icon.png') }}" alt="brewtique-icon">
+                    <a href="/Home">
+                        <img src="{{ asset('icons/brewtique-user-icon.png') }}" alt="brewtique-icon">
+                    </a>
                     <h1 class="font-TitleFont text-xl font-black">Brewtique</h1>
                 </div>
                 <div>
@@ -24,11 +26,19 @@
                     @csrf
                     <!-- Username Field -->
                     <label class="font-Primary px-5 text-sm">Username</label>
-                    @error('name')
+                    @error('username')
                         <!-- Display validation error for username -->
                         <span class="text-xs text-red-500">{{ $message }}</span>
                     @enderror
-                    <input name="name" type="text" placeholder="Username"
+                    <input name="username" type="text" placeholder="Username"
+                        class="bg-colorExtra mt-2.5 rounded-md px-3.5 py-2.5 text-sm">
+
+                    <!-- Full Name Field -->
+                    <label class="font-Primary mt-2.5 px-5 text-sm">Full Name</label>
+                    @error('name')
+                        <span class="text-xs text-red-500">{{ $message }}</span>
+                    @enderror
+                    <input name="name" type="text" placeholder="Full Name"
                         class="bg-colorExtra mt-2.5 rounded-md px-3.5 py-2.5 text-sm">
 
                     <!-- Email Field -->
@@ -53,8 +63,8 @@
                     <div class="text-txtExtra flex flex-row justify-between px-5 py-2.5">
                         <div class="flex flex-row items-center gap-2">
                             <!-- Remember Me Checkbox -->
-                            <input type="checkbox"
-                                class="h-5 w-5 appearance-none rounded border-0 bg-gray-200 checked:bg-blue-500">
+                            <input type="checkbox" name="remember"
+                                class="border-txtHighlighted focus:ring-txtHighlighted h-5 w-5 rounded border-2 bg-gray-200 text-blue-500 transition-all duration-200 focus:ring-2">
                             <span class="font-Primary text-txtExtra text-xs">Remember me</span>
                         </div>
                         <div class="flex">

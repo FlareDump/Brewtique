@@ -1,5 +1,5 @@
 {{-- cta --}}
-<div class="bg-bgPrimary lg:h-180 md:h-180 relative h-screen w-full bg-cover bg-center bg-blend-multiply"
+<div class="bg-bgPrimary lg:h-150 md:h-150 relative h-screen w-full bg-cover bg-center bg-blend-multiply"
     style="background-image: url({{ asset('images/coffeebg.png') }});">
     <!-- Darken Background -->
     <div class="bg-bgSecondary/50 absolute inset-0"></div>

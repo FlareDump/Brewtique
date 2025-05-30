@@ -16,7 +16,9 @@
                 <div>
                     <!-- Logo, Title, and Greeting -->
                     <div class="flex items-center justify-center gap-3.5">
-                        <img src="{{ asset('icons/brewtique-user-icon.png') }}" alt="brewtique-icon">
+                        <a href="/Home">
+                            <img src="{{ asset('icons/brewtique-user-icon.png') }}" alt="brewtique-icon">
+                        </a>
                         <h1 class="font-TitleFont text-xl font-black">Brewtique</h1>
                     </div>
                     <div>
@@ -44,7 +46,8 @@
                                 <span class="mt-2.5 text-sm text-red-500">{{ $errors->first('loginError') }}</span>
                             @endif
                             <input name="loginName" type="text" placeholder="Username"
-                                class="bg-colorExtra mt-2.5 rounded-md px-3.5 py-2.5 text-sm">
+                                class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText mt-2.5 rounded-md border-2 px-3.5 py-2.5 text-sm shadow-sm transition-all duration-200 focus:outline-none focus:ring-2"
+                                autocomplete="username">
                             <!-- End Username Field -->
 
                             <!-- Password Field -->
@@ -58,15 +61,16 @@
                                 <span class="mt-2.5 text-sm text-red-500">{{ $errors->first('loginError') }}</span>
                             @endif
                             <input name="loginPassword" type="password" placeholder="********"
-                                class="bg-colorExtra mt-2.5 rounded-md px-3.5 py-2.5 text-sm">
+                                class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText mt-2.5 rounded-md border-2 px-3.5 py-2.5 text-sm shadow-sm transition-all duration-200 focus:outline-none focus:ring-2"
+                                autocomplete="current-password">
                             <!-- End Password Field -->
 
                             <!-- Remember Me and Forgot Password Section -->
                             <div class="text-txtExtra flex flex-row justify-between px-5 py-2.5">
+                                <!-- Remember Me Checkbox -->
                                 <div class="flex flex-row items-center gap-2">
-                                    <!-- Remember Me Checkbox -->
-                                    <input type="checkbox"
-                                        class="h-5 w-5 appearance-none rounded border-0 bg-gray-200 checked:bg-blue-500">
+                                    <input type="checkbox" name="remember"
+                                        class="border-txtHighlighted focus:ring-txtHighlighted h-5 w-5 rounded border-2 bg-gray-200 text-blue-500 transition-all duration-200 focus:ring-2">
                                     <span class="font-Primary text-txtExtra text-xs">Remember me</span>
                                 </div>
                                 <div class="flex">

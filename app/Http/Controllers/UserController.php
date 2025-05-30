@@ -10,14 +10,18 @@ class UserController extends Controller
 {
     public function signinPost(Request $request){
         $incomingFields = $request->validate([
-            'name' => ['required', 'min:3','max:20', Rule::unique('users','name')],
+            'username' => ['required', 'min:3','max:20', Rule::unique('users','username')],
+            'name' => ['required', 'min:3','max:50'],
             'email' => ['required', 'email', Rule::unique('users','email')],
-            'password' => 'required','min:8','max:200',
+            'password' => ['required','min:8','max:200'],
         ], [
-            'name.required' => 'The username field is required.',
-            'name.min' => 'The username must be at least 3 characters.',
-            'name.max' => 'The username may not be greater than 20 characters.',
-            'name.unique' => 'The username has already been taken.',
+            'username.required' => 'The username field is required.',
+            'username.min' => 'The username must be at least 3 characters.',
+            'username.max' => 'The username may not be greater than 20 characters.',
+            'username.unique' => 'The username has already been taken.',
+            'name.required' => 'The full name field is required.',
+            'name.min' => 'The full name must be at least 3 characters.',
+            'name.max' => 'The full name may not be greater than 50 characters.',
             'email.unique' => 'The email has already been taken.',
             'email.required' => 'The email field is required.',
             'email.email' => 'The email must be a valid email address.',
@@ -45,10 +49,11 @@ class UserController extends Controller
             'loginPassword.required' => 'The password field is required.',
         ]);
 
-        $name = $incomingFields['loginName'];
+        $username = $incomingFields['loginName'];
         $password = $incomingFields['loginPassword'];
+        $remember = $request->has('remember');
 
-        if(auth()->attempt(['name' => $name, 'password' => $password])){
+        if(auth()->attempt(['username' => $username, 'password' => $password], $remember)){
             $request->session()->regenerate();
         }
         else{
@@ -62,5 +67,21 @@ class UserController extends Controller
     public function logout(){
         auth()->logout();
         return redirect('/Home');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+        $validated = $request->validate([
+            'username' => ['required', 'min:3', 'max:20', Rule::unique('users', 'username')->ignore($user->id)],
+            'name' => ['required', 'min:3', 'max:50'],
+            'phone_number' => ['nullable', 'string', 'max:20'],
+            'gender' => ['nullable', 'in:male,female,other'],
+            'date_of_birth' => ['nullable', 'date'],
+        ]);
+
+        $user->update($validated);
+
+        return redirect('/Dashboard')->with('success', 'Profile updated successfully!');
     }
 }

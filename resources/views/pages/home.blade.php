@@ -17,3 +17,6 @@
 <div id="promoModal" class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/50">
     @include('components.promo')
 </div>
+
+@include('layouts.testimonial_section')
+@include('layouts.footer_section')

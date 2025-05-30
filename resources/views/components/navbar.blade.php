@@ -14,7 +14,7 @@
             <li><a href="/Products">Products</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-        <a href="/Login">
+        <a href="/Splash">
             <button
                 class="border-txtTertiary text-txtTertiary rounded-lg border px-12 py-0.5 font-bold md:flex lg:flex">
                 Login
@@ -36,14 +36,45 @@
     </div>
 </nav>
 
-<div id="menu" class="absolute right-5 top-16 z-50 hidden w-48 rounded-lg bg-white p-4 shadow-lg">
-    <ul class="font-Primary text-txtTertiary flex flex-col gap-y-4 text-center text-[16px] font-black">
-        <li><a href="/Home">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="/Products">Products</a></li>
-        <li><a href="#">Contact</a></li>
-        <li class="mt-5"><a href="/Login">Login</a></li>
-    </ul>
+<div id="menu" class="fixed inset-0 z-50 items-center justify-center" style="display: none;">
+    <!-- Overlay for closing -->
+    <div id="menu-overlay" class="absolute inset-0 cursor-pointer bg-black"
+        style="background-color: rgba(0, 0, 0, 0.4);"></div>
+    <!-- Centered Menu Panel -->
+    <div class="bg-colorExtra relative z-10 flex w-[90vw] max-w-xs flex-col justify-between rounded-lg p-8 shadow-2xl">
+        <ul class="font-Primary text-txtExtra flex flex-col gap-3 text-[18px] font-black">
+            <li>
+                <a href="/Home"
+                    class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                    <i class="fa-solid fa-house text-2xl"></i> Home
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                    <i class="fa-solid fa-users text-2xl"></i> About Us
+                </a>
+            </li>
+            <li>
+                <a href="/Products"
+                    class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                    <i class="fa-solid fa-mug-hot text-2xl"></i> Products
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                    <i class="fa-solid fa-envelope text-2xl"></i> Contact
+                </a>
+            </li>
+        </ul>
+        <a href="/Login" class="mt-8">
+            <button
+                class="bg-btnColor hover:bg-btnColor2 text-txtPrimary font-Primary flex w-full items-center justify-center gap-3 rounded-md px-4 py-3 text-xl font-bold shadow transition-colors duration-200">
+                <i class="fa-solid fa-arrow-right-to-bracket text-2xl"></i> Login
+            </button>
+        </a>
+    </div>
 </div>
 
 @vite('resources/js/app.js')

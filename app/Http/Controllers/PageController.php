@@ -23,5 +23,10 @@ class PageController extends Controller
     public function login(){
         return view('pages.login');
     }
-
+    public function userDashboard(){
+    return view('pages.user_dashboard');
+    }
+    public function splashscreen(){
+        return view('pages.splashscreen');
+    }
 }

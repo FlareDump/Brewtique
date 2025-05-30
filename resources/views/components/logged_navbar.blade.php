@@ -28,20 +28,44 @@
             </button>
 
             <!-- Dropdown Menu -->
-            <div id="user-menu" class="absolute right-0 z-50 mt-2 hidden w-48 rounded-lg bg-white p-4 shadow-lg">
-                <p class="text-sm text-gray-700">This is a Prototype Feature</p>
-
-                <!-- Logout Button -->
-                <form action="Logout" method="POST">
+            <div id="user-menu" class="bg-colorExtra absolute right-0 z-50 mt-2 hidden w-64 rounded-lg p-6 shadow-2xl">
+                <ul class="flex flex-col gap-4">
+                    <li>
+                        <a href="#"
+                            class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-2 text-base transition-colors duration-200">
+                            <i class="fa-regular fa-user text-xl"></i> My Account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
+                            <i class="fa-solid fa-mug-hot text-xl"></i> My Purchase
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
+                            <i class="fa-solid fa-bag-shopping text-xl"></i> My Bag
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
+                            <i class="fa-regular fa-bell text-xl"></i> Notifications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
+                            <i class="fa-solid fa-ticket text-xl"></i> Vouchers
+                        </a>
+                    </li>
+                </ul>
+                <form action="Logout" method="POST" class="mt-8">
                     @csrf
                     <button type="submit"
-                        class="group relative mt-5 rounded-md bg-red-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-red-600">
-                        Logout
-                        <!-- Tooltip Message -->
-                        <span
-                            class="absolute left-1/2 top-full mt-1 hidden w-max -translate-x-1/2 rounded-md bg-gray-700 px-2 py-1 text-xs text-white group-hover:block">
-                            This is a Prototype Feature
-                        </span>
+                        class="bg-btnColor font-Primary text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-2 text-lg font-bold transition duration-300 ease-in-out">
+                        <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i> Logout
                     </button>
                 </form>
             </div>
@@ -68,28 +92,78 @@
 </nav>
 
 <!-- Small Screen Burger Menu Popup -->
-<div id="menu" class="bg-colorExtra absolute right-5 top-16 z-50 hidden w-48 rounded-lg p-4 shadow-lg">
-    <ul class="font-Primary text-txtExtra flex flex-col gap-y-4 text-center text-[16px] font-black">
-        <!-- Navbar Links -->
-        <li><a href="/Home" class="hover:text-txtHighlighted">Home</a></li>
-        <li><a href="#" class="hover:text-txtHighlighted">About Us</a></li>
-        <li><a href="/Products" class="hover:text-txtHighlighted">Products</a></li>
-        <li><a href="#" class="hover:text-txtHighlighted">Contact</a></li>
-
-        <!-- Logout Button -->
-        <form action="Logout" method="POST">
+<div id="menu" class="fixed inset-0 z-50 items-center justify-center" style="display: none;">
+    <!-- Overlay for closing -->
+    <div id="menu-overlay" class="absolute inset-0 cursor-pointer bg-black"
+        style=" background-color: rgba(0, 0, 0, 0.4);"></div>
+    <!-- Centered Menu Panel -->
+    <div class="bg-colorExtra relative z-10 flex w-[90vw] max-w-xs flex-col justify-between rounded-lg p-8 shadow-2xl">
+        <div>
+            <ul class="font-Primary text-txtExtra flex flex-col gap-3 text-[18px] font-black">
+                <li>
+                    <a href="/Home"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-solid fa-house text-2xl"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-solid fa-users text-2xl"></i> About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="/Products"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-solid fa-mug-hot text-2xl"></i> Products
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-solid fa-envelope text-2xl"></i> Contact
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg font-bold transition-colors duration-200">
+                        <i class="fa-regular fa-user text-2xl"></i> My Account
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-solid fa-mug-hot text-2xl"></i> My Purchase
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-solid fa-bag-shopping text-2xl"></i> My Bag
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-regular fa-bell text-2xl"></i> Notifications
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
+                        <i class="fa-solid fa-ticket text-2xl"></i> Vouchers
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <form action="Logout" method="POST" class="mt-8 w-full">
             @csrf
             <button type="submit"
-                class="group relative mt-5 rounded-md bg-red-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-red-600">
-                Logout
-                <!-- Tooltip Message -->
-                <span
-                    class="absolute left-1/2 top-full mt-1 hidden w-max -translate-x-1/2 rounded-md bg-gray-700 px-2 py-1 text-xs text-white group-hover:block">
-                    This is a Prototype Feature
-                </span>
+                class="bg-btnColor text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-3 text-xl font-bold transition duration-300 ease-in-out">
+                <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i> Logout
             </button>
         </form>
-    </ul>
+    </div>
 </div>
 <!-- End of Small Screen Burger Menu Popup -->
 
