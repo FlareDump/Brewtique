@@ -17,11 +17,11 @@ Route::get('/Dashboard/Order-History', [PageController::class, 'orderHistory']);
 Route::get('/Dashboard/My-Bag', [PageController::class, 'mybag']);
 Route::get('/Dashboard/Notifications', [PageController::class, 'notification']);
 Route::get('/Dashboard/Vouchers', [PageController::class, 'voucher']);
-
 Route::get('/Splash', [PageController::class, 'splashscreen']);
-
 
 Route::post('/SignIn', [UserController::class, 'signinPost']);
 Route::post('/Logout', [UserController::class, 'logout']);
 Route::post('/Login', [UserController::class, 'loginPost']);
 Route::post('/user/update', [UserController::class, 'updateProfile']);
+
+?>

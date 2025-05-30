@@ -61,7 +61,7 @@
                         </a>
                     </li>
                 </ul>
-                <form action="Logout" method="POST" class="mt-8">
+                <form action="/Logout" method="POST" class="mt-8">
                     @csrf
                     <button type="submit"
                         class="bg-btnColor font-Primary text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-2 text-lg font-bold transition duration-300 ease-in-out">

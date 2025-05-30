@@ -27,21 +27,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/Dashboard/My-Bag"
                             class="text-txtSecondary hover:bg-txtHighlighted/40 flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
                             <i class="fa-solid fa-bag-shopping text-2xl"></i>
                             My Bag
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/Dashboard/Notifications"
                             class="text-txtSecondary hover:bg-txtHighlighted/40 flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
                             <i class="fa-regular fa-bell text-2xl"></i>
                             Notifications
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/Dashboard/Vouchers"
                             class="text-txtSecondary hover:bg-txtHighlighted/40 flex items-center gap-3 rounded-md px-3 py-2 font-medium transition">
                             <i class="fa-solid fa-ticket text-2xl"></i>
                             Vouchers

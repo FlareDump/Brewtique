@@ -8,12 +8,13 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function signinPost(Request $request){
+    public function signinPost(Request $request)
+    {
         $incomingFields = $request->validate([
-            'username' => ['required', 'min:3','max:20', Rule::unique('users','username')],
-            'name' => ['required', 'min:3','max:50'],
-            'email' => ['required', 'email', Rule::unique('users','email')],
-            'password' => ['required','min:8','max:200'],
+            'username' => ['required', 'min:3', 'max:20', Rule::unique('users', 'username')],
+            'name' => ['required', 'min:3', 'max:50'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['required', 'min:8', 'max:200'],
         ], [
             'username.required' => 'The username field is required.',
             'username.min' => 'The username must be at least 3 characters.',
@@ -37,10 +38,13 @@ class UserController extends Controller
         return redirect('/Home');
     }
 
-    public function loginPost(Request $request){
+    public function loginPost(Request $request)
+    {
         $incomingFields = $request->validate([
-            'loginName' => ['required', 'min:3','max:20'],
-            'loginPassword' => 'required','min:8','max:200',
+            'loginName' => ['required', 'min:3', 'max:20'],
+            'loginPassword' => 'required',
+            'min:8',
+            'max:200',
         ], [
         ], [
             'loginName.required' => 'The email field is required.',
@@ -53,10 +57,9 @@ class UserController extends Controller
         $password = $incomingFields['loginPassword'];
         $remember = $request->has('remember');
 
-        if(auth()->attempt(['username' => $username, 'password' => $password], $remember)){
+        if (auth()->attempt(['username' => $username, 'password' => $password], $remember)) {
             $request->session()->regenerate();
-        }
-        else{
+        } else {
             return back()->withErrors(['loginError' => 'Invalid credentials.']);
         }
 
@@ -64,7 +67,8 @@ class UserController extends Controller
 
     }
 
-    public function logout(){
+    public function logout()
+    {
         auth()->logout();
         return redirect('/Home');
     }
@@ -82,6 +86,6 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return redirect('/Dashboard')->with('success', 'Profile updated successfully!');
+        return redirect('/Dashboard/User')->with('success', 'Profile updated successfully!');
     }
 }

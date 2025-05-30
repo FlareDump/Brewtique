@@ -73,3 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// Bag quantity update logic
+window.updateBagQty = function(btn, delta) {
+    const qtySpan = btn.parentElement.querySelector('.bag-qty');
+    let qty = parseInt(qtySpan.textContent, 10) || 1;
+    qty += delta;
+    if (qty < 1) qty = 1;
+    qtySpan.textContent = qty;
+};
