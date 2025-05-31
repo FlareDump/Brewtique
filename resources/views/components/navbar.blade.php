@@ -11,7 +11,7 @@
         <ul class="font-Primary text-txtTertiary text-[16px] font-black md:flex md:gap-x-10 lg:flex lg:gap-x-20">
             <li><a href="/Home">Home</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="/Products">Products</a></li>
+            <li><a href="/ProductsPage">Products</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <a href="/Splash">
@@ -56,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a href="/Products"
+                <a href="/ProductsPage"
                     class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                     <i class="fa-solid fa-mug-hot text-2xl"></i> Products
                 </a>

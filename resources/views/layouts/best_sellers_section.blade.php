@@ -34,90 +34,65 @@
         <div
             class="mt-5 grid grid-cols-1 grid-rows-6 gap-5 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-2">
             <div
-                class="md:hover:bg-btnColor/30 flex flex-col gap-5 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
+                class="md:hover:bg-btnColor/30 flex flex-col gap-3 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
                 <img src="{{ asset('images/best_seller1.png') }}" alt="Iced Hazelnut">
-                <div class="px-2 md:px-4">
+                <div class="px-2 pb-2 md:px-4">
                     <div class="flex justify-between gap-5">
                         <p class="font-Primary font-bold">Iced Hazelnut</p>
                         <p class="font-Primary text-txtHighlighted font-semibold">₱180.00</p>
                     </div>
-                    <div class="flex justify-between gap-5">
-                        <p class="font-Primary font-bold">Latte</p>
-                        <p class="font-Primary text-xs font-semibold">300 ml</p>
-                    </div>
                 </div>
             </div>
             <div
-                class="md:hover:bg-btnColor/30 flex flex-col gap-5 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
+                class="md:hover:bg-btnColor/30 flex flex-col gap-3 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
                 <img src="{{ asset('images/best_seller2.png') }}" alt="Classic Brewtique">
-                <div class="px-2 md:px-4">
+                <div class="px-2 pb-2 md:px-4">
                     <div class="flex justify-between gap-5">
                         <p class="font-Primary font-bold">Classic Brewtique</p>
                         <p class="font-Primary text-txtHighlighted font-semibold">₱90.00</p>
                     </div>
-                    <div class="flex justify-between gap-5">
-                        <p class="font-Primary font-bold">Espresso</p>
-                        <p class="font-Primary text-xs font-semibold">150 ml</p>
-                    </div>
                 </div>
             </div>
             <div
-                class="md:hover:bg-btnColor/30 flex flex-col gap-5 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
+                class="md:hover:bg-btnColor/30 flex flex-col gap-3 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
                 <img src="{{ asset('images/best_seller3.png') }}" alt="Spanish Latte">
-                <div class="px-2 md:px-4">
+                <div class="px-2 pb-2 md:px-4">
                     <div class="flex justify-between gap-5">
                         <p class="font-Primary font-bold">Spanish Latte</p>
                         <p class="font-Primary text-txtHighlighted font-semibold">₱140.00</p>
                     </div>
-                    <div class="flex justify-between gap-5">
-                        <p class="font-Primary font-bold">Latte</p>
-                        <p class="font-Primary text-xs font-semibold">180 ml</p>
-                    </div>
                 </div>
             </div>
             <div
-                class="md:hover:bg-btnColor/30 flex flex-col gap-5 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
+                class="md:hover:bg-btnColor/30 flex flex-col gap-3 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
                 <img src="{{ asset('images/best_seller4.png') }}" alt="Caramel Crave">
-                <div class="px-2 md:px-4">
+                <div class="px-2 pb-2 md:px-4">
                     <div class="flex justify-between gap-5">
                         <p class="font-Primary font-bold">Caramel Crave</p>
                         <p class="font-Primary text-txtHighlighted font-semibold">₱180.00</p>
                     </div>
-                    <div class="flex justify-between gap-5">
-                        <p class="font-Primary font-bold">Macchiato</p>
-                        <p class="font-Primary text-xs font-semibold">300 ml</p>
-                    </div>
                 </div>
             </div>
             <div
-                class="md:hover:bg-btnColor/30 flex flex-col gap-5 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
+                class="md:hover:bg-btnColor/30 flex flex-col gap-3 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
                 <img src="{{ asset('images/best_seller5.png') }}" alt="Mocha Vanilla">
-                <div class="px-2 md:px-4">
+                <div class="px-2 pb-2 md:px-4">
                     <div class="flex justify-between gap-5">
                         <p class="font-Primary font-bold">Mocha Vanilla</p>
                         <p class="font-Primary text-txtHighlighted font-semibold">₱150.00</p>
                     </div>
-                    <div class="flex justify-between gap-5">
-                        <p class="font-Primary font-bold">Frappe</p>
-                        <p class="font-Primary text-xs font-semibold">300 ml</p>
-                    </div>
                 </div>
             </div>
             <div
-                class="md:hover:bg-btnColor/30 flex flex-col gap-5 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
+                class="md:hover:bg-btnColor/30 flex flex-col gap-3 transition duration-200 md:rounded-xl md:hover:scale-105 md:hover:shadow-2xl">
                 <img src="{{ asset('images/best_seller6.png') }}" alt="Choco Chill Cold">
-                <div class="px-2 md:px-4">
+                <div class="px-2 pb-2 md:px-4">
                     <div class="flex justify-between gap-5">
                         <p class="font-Primary font-bold">Choco Chill Cold</p>
                         <p class="font-Primary text-txtHighlighted font-semibold">₱180.00</p>
                     </div>
-                    <div class="flex justify-between gap-5">
-                        <p class="font-Primary font-bold">Brew</p>
-                        <p class="font-Primary text-xs font-semibold">350 ml</p>
-                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 </section>

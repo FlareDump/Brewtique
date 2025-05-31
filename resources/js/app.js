@@ -72,6 +72,42 @@ document.addEventListener("DOMContentLoaded", () => {
             userMenuMobile.classList.remove("items-center", "justify-center");
         });
     }
+
+    // Product modal logic
+    const productModal = document.getElementById("productModal");
+    if (productModal) {
+        // Open modal on product card click
+        document.querySelectorAll('[data-product-card]').forEach(card => {
+            card.addEventListener('click', function() {
+                const product = JSON.parse(this.getAttribute('data-product'));
+                const modalImg = productModal.querySelector('img');
+                const modalTitle = productModal.querySelector('h2');
+                if (modalImg && product.ImagePath) {
+                    modalImg.src = product.ImagePath || '/images/best_seller1.png';
+                    modalImg.alt = product.ProdName;
+                }
+                if (modalTitle && product.ProdName) {
+                    modalTitle.textContent = product.ProdName;
+                }
+                productModal.classList.remove('hidden');
+                productModal.classList.add('flex');
+            });
+        });
+        // Close modal on close button click
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('[data-modal-close]')) {
+                productModal.classList.add('hidden');
+                productModal.classList.remove('flex');
+            }
+        });
+        // Close modal when clicking outside modal content
+        productModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+                this.classList.remove('flex');
+            }
+        });
+    }
 });
 
 // Bag quantity update logic
