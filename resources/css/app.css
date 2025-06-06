@@ -37,4 +37,16 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+    .product-nav-link.active{
+        background-color: transparent;
+        color: #fff !important;
+        border: 2.5px solid #fff;
+        border-radius: 100px;
+        padding: 0.35em 1.8em;
+        letter-spacing: 0.01em;
+        transition: border 0.2s, color 0.2s;
+    }
+    .product-nav-link {
+        transition: background 0.2s, color 0.2s;
+    }
 }

@@ -16,7 +16,7 @@
         <ul class="font-Primary text-txtTertiary text-[16px] font-black md:flex md:gap-x-10 lg:flex lg:gap-x-20">
             <li><a href="/Home">Home</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="/ProductsPage">Products</a></li>
+            <li><a href="/AllProducts">Products</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
 
@@ -37,31 +37,31 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/Dashboard/Order-History"
                             class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
-                            <i class="fa-solid fa-mug-hot text-xl"></i> My Purchase
+                            <i class="fa-solid fa-mug-hot text-xl"></i> Order History
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/Dashboard/My-Bag"
                             class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
                             <i class="fa-solid fa-bag-shopping text-xl"></i> My Bag
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/Dashboard/Notifications"
                             class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
                             <i class="fa-regular fa-bell text-xl"></i> Notifications
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/Dashboard/Vouchers"
                             class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 px-4 py-2 text-base transition-colors duration-200">
                             <i class="fa-solid fa-ticket text-xl"></i> Vouchers
                         </a>
                     </li>
                 </ul>
-                <form action="/Logout" method="POST" class="mt-8">
+                <form action="{{ route('logout') }}" method="POST" class="mt-8">
                     @csrf
                     <button type="submit"
                         class="bg-btnColor font-Primary text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-2 text-lg font-bold transition duration-300 ease-in-out">
@@ -115,7 +115,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/ProductsPage"
+                    <a href="/AllProducts"
                         class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                         <i class="fa-solid fa-mug-hot text-2xl"></i> Products
                     </a>
@@ -147,31 +147,31 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/Dashboard/Order-History"
                         class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                         <i class="fa-solid fa-mug-hot text-2xl"></i> Order History
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/Dashboard/My-Bag"
                         class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                         <i class="fa-solid fa-bag-shopping text-2xl"></i> My Bag
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/Dashboard/Notifications"
                         class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                         <i class="fa-regular fa-bell text-2xl"></i> Notifications
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/Dashboard/Vouchers"
                         class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                         <i class="fa-solid fa-ticket text-2xl"></i> Vouchers
                     </a>
                 </li>
             </ul>
-            <form action="Logout" method="POST" class="mt-8 w-full">
+            <form action="{{ route('logout') }}" method="POST" class="mt-8 w-full">
                 @csrf
                 <button type="submit"
                     class="bg-btnColor text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-3 text-xl font-bold transition duration-300 ease-in-out">

@@ -56,8 +56,16 @@
                         <!-- Display validation error for password -->
                         <span class="text-xs text-red-500">{{ $message }}</span>
                     @enderror
-                    <input name="password" type="password" placeholder="********"
-                        class="bg-colorExtra mt-2.5 rounded-md px-3.5 py-2.5 text-sm">
+                    <div class="relative w-full">
+                        <input name="password" type="password" placeholder="********"
+                            class="toggle-password bg-colorExtra mt-2.5 w-full rounded-md px-3.5 py-2.5 pr-10 text-sm"
+                            autocomplete="new-password" id="signinPasswordInput">
+                        <button type="button" id="toggleSigninPasswordBtn"
+                            class="absolute inset-y-0 right-3 flex translate-y-1.5 items-center text-gray-400 focus:outline-none"
+                            tabindex="-1">
+                            <i id="signinEyeIcon" class="fa fa-eye fa-lg"></i>
+                        </button>
+                    </div>
 
                     <!-- Remember Me and Forgot Password Section -->
                     <div class="text-txtExtra flex flex-row justify-between px-5 py-2.5">
@@ -108,3 +116,5 @@
     </div>
 </div>
 <!-- End of Sign-In Page -->
+
+@vite(['resources/js/app.js'])

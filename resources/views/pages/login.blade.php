@@ -60,9 +60,17 @@
                                 <!-- Display general login error -->
                                 <span class="mt-2.5 text-sm text-red-500">{{ $errors->first('loginError') }}</span>
                             @endif
-                            <input name="loginPassword" type="password" placeholder="********"
-                                class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText mt-2.5 rounded-md border-2 px-3.5 py-2.5 text-sm shadow-sm transition-all duration-200 focus:outline-none focus:ring-2"
-                                autocomplete="current-password">
+                            <div class="relative w-full">
+                                <input name="loginPassword" type="password" placeholder="********"
+                                    class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText mt-2.5 w-full rounded-md border-2 px-3.5 py-2.5 pr-10 text-sm shadow-sm transition-all duration-200 focus:outline-none focus:ring-2"
+                                    autocomplete="current-password" id="loginPasswordInput">
+                                <button type="button" id="togglePasswordBtn"
+                                    class="absolute inset-y-0 right-3 flex translate-y-1.5 items-center text-gray-400 focus:outline-none"
+                                    tabindex="-1">
+                                    <i id="eyeIcon" class="fa fa-eye fa-lg"></i>
+                                </button>
+                                </input>
+                            </div>
                             <!-- End Password Field -->
 
                             <!-- Remember Me and Forgot Password Section -->
@@ -114,3 +122,5 @@
         </div>
     </div>
 </div>
+
+@vite('resources/js/app.js')

@@ -82,6 +82,7 @@ class UserController extends Controller
             'phone_number' => ['nullable', 'string', 'max:20'],
             'gender' => ['nullable', 'in:male,female,other'],
             'date_of_birth' => ['nullable', 'date'],
+            'address' => ['nullable', 'string', 'max:255'],
         ]);
 
         $user->update($validated);

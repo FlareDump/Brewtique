@@ -6,19 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-   protected $primaryKey = 'CartID';
-   protected $fillable = [
-      'UserID',
-      'ProdCatCode',
-      'ProdPrice',
-      'MilkCode',
-      'MilkPrice',
-      'AddonCode',
-      'AddonPrice',
-      'Quantity',
-      'Size',
-      'SizePrice',
-      'AddedAt'
-   ];
-   public $timestamps = false;
+    // Specify the table name if not the plural of the model name
+    protected $table = 'cart';
+
+    // Allow mass assignment for these fields
+    protected $fillable = [
+        'ProductName',
+        'ImagePath',
+        'ProdPrice',
+        'CupSize',
+        'CupSizePrice',
+        'Milk',
+        'MilkPrice',
+        'Addon',
+        'AddonPrice',
+        'Quantity',
+        'TotalPrice',
+        'AddedAt',
+    ];
+
+    // Disable timestamps if not using created_at/updated_at
+    public $timestamps = false;
 }

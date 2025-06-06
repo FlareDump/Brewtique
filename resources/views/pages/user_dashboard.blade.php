@@ -7,10 +7,11 @@
 @endauth
 
 @section('title', 'User Dashboard')
-<section class="font-Primary flex min-h-screen flex-col justify-between py-10">
-    <div class="h-100 py-15 w-full px-10">
-        <div class="grid grid-cols-6 grid-rows-1 gap-4">
-            <div class="bg-bgColor flex h-full min-h-[600px] flex-col justify-between rounded-md p-5 shadow-sm">
+<section class="font-Primary flex min-h-screen flex-col justify-between py-4 md:py-10">
+    <div class="md:py-15 h-full w-full px-4 py-5 md:px-10">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-6">
+            <div
+                class="bg-bgColor flex h-full min-h-[400px] flex-col justify-between rounded-md p-5 shadow-sm md:min-h-[600px]">
                 <ul class="flex flex-col gap-3 p-2">
                     <li>
                         <a href="/Dashboard/User"
@@ -49,14 +50,16 @@
                     </li>
                 </ul>
                 <div class="flex">
-                    <button
-                        class="bg-txtHighlighted hover:bg-txtSecondary flex w-full items-center gap-3 rounded-md px-6 py-2 text-lg font-medium text-white transition">
-                        <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i>
-                        Logout
-                    </button>
+                    <form action="{{ route('logout') }}" method="POST" class="mt-8">
+                        @csrf
+                        <button type="submit"
+                            class="bg-btnColor font-Primary text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-2 text-lg font-bold transition duration-300 ease-in-out">
+                            <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i> Logout
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="col-span-3 rounded-md bg-white p-5">
+            <div class="rounded-md bg-white p-5 md:col-span-3">
                 <div class="flex flex-col items-center">
                     <h1 class="text-3xl font-bold">
                         Hello, {{ Auth::user()->username }}!
@@ -69,29 +72,29 @@
                 <form id="user-profile-form" action="/user/update" method="POST"
                     class="mx-auto mt-8 flex w-full max-w-xl flex-col gap-6">
                     @csrf
-                    <div class="flex items-center gap-8">
+                    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
                         <label class="w-40 text-lg font-normal">Username</label>
                         <input type="text" name="username"
                             class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText h-8 flex-1 rounded-md border-2 px-2 transition-all duration-200 focus:ring-2"
                             value="{{ Auth::user()->username ?? '' }}" required />
                     </div>
-                    <div class="flex items-center gap-8">
+                    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
                         <label class="w-40 text-lg font-normal">Name</label>
                         <input type="text" name="name"
                             class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText h-8 flex-1 rounded-md border-2 px-2 transition-all duration-200 focus:ring-2"
                             value="{{ Auth::user()->name }}" required />
                     </div>
-                    <div class="flex items-center gap-8">
+                    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
                         <label class="w-40 text-lg font-normal">Email</label>
                         <span class="flex-1 text-gray-500">{{ Auth::user()->email }}</span>
                     </div>
-                    <div class="flex items-center gap-8">
+                    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
                         <label class="w-40 text-lg font-normal">Phone Number</label>
                         <input type="text" name="phone_number"
                             class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText h-8 flex-1 rounded-md border-2 px-2 transition-all duration-200 focus:ring-2"
                             placeholder="Enter phone number" value="{{ Auth::user()->phone_number ?? '' }}" />
                     </div>
-                    <div class="flex items-center gap-8">
+                    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
                         <label class="w-40 text-lg font-normal">Gender</label>
                         <div class="flex flex-1 gap-8">
                             <label class="flex items-center gap-2">
@@ -111,11 +114,24 @@
                             </label>
                         </div>
                     </div>
-                    <div class="flex items-center gap-8">
+                    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
                         <label class="w-40 text-lg font-normal">Date of Birth</label>
                         <input type="date" name="date_of_birth"
                             class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText h-8 flex-1 rounded-md border-2 px-2 transition-all duration-200 focus:ring-2"
                             value="{{ Auth::user()->date_of_birth ?? '' }}" />
+                    </div>
+                    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
+                        <label class="w-40 text-lg font-normal">Address</label>
+                        <div class="flex flex-1 items-center gap-2">
+                            <input type="text" name="address" id="userAddressInput"
+                                class="border-colorExtra bg-colorExtra text-txtSecondary focus:border-txtHighlighted focus:ring-txtHighlighted placeholder-txtSubText h-8 w-full rounded-md border-2 px-2 transition-all duration-200 focus:ring-2"
+                                placeholder="Enter your address or pick from map"
+                                value="{{ Auth::user()->address ?? '' }}" />
+                            <button type="button" id="openMapPickerBtn"
+                                class="bg-txtHighlighted flex items-center justify-center rounded px-4 py-4 text-xs text-white">
+                                <i class="fa-solid fa-location-dot fa-lg"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="mt-8 flex justify-center">
                         <button type="submit"
@@ -123,9 +139,8 @@
                     </div>
                 </form>
             </div>
-
             <div
-                class="bg-bgColor col-span-2 col-start-5 flex h-full min-h-[600px] flex-col justify-between rounded-md p-5 shadow-sm">
+                class="bg-bgColor col-start-1 mt-6 flex h-full min-h-[400px] flex-col justify-between rounded-md p-5 shadow-sm md:col-span-2 md:col-start-5 md:mt-0 md:min-h-[600px]">
                 <!-- Header -->
                 <div class="mb-4 flex items-center justify-between">
                     <div class="flex items-center gap-2">
@@ -164,3 +179,21 @@
 </section>
 
 @include('layouts.footer_section')
+
+@vite('resources/js/app.js')
+
+<!-- Map Picker Modal -->
+<div id="mapPickerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+    <div class="relative w-full max-w-xl rounded-lg bg-white p-4 shadow-lg">
+        <button id="closeMapPickerBtn" class="absolute right-2 top-2 text-gray-500 hover:text-black">&times;</button>
+        <h2 class="mb-2 text-lg font-bold">Pick your location</h2>
+        <div id="mapPicker" style="height: 350px; width: 100%;" class="rounded"></div>
+        <div class="mt-3 flex justify-end">
+            <button id="confirmMapPickerBtn" class="bg-txtHighlighted rounded px-4 py-1 text-white">Confirm</button>
+        </div>
+    </div>
+</div>
+
+@vite('resources/js/app.js')
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>

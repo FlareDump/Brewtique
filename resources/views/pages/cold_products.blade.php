@@ -7,7 +7,7 @@
     @include('components.navbar')
 @endauth
 
-@section('title', 'Brewtique - Hot Drinks')
+@section('title', 'Brewtique - Cold Drinks')
 
 <div class="bg-colorExtra pt-8 font-sans text-[#1e1e1e]">
     <!-- Tabs -->
@@ -16,9 +16,9 @@
             @include('components.products_navbar')
         </div>
 
-
-        <h1 class="mb-5 ml-20 mt-5 text-left text-3xl font-bold">Hot Drinks</h1>
-        <div class="no-scrollbar bg-bgColor col-span-2 h-full max-h-screen overflow-y-auto">
+        <h1 class="mb-5 ml-20 mt-5 text-left text-3xl font-bold">Cold Drinks</h1>
+        <!-- Product List -->
+        <div class="no-scrollbar bg-bgColor row-span-2 h-full max-h-screen overflow-y-auto md:col-span-2 md:row-auto">
             <div class="Flex flex-wrap justify-center gap-4 p-2 md:p-4">
                 @foreach ($products as $product)
                     @if ($product->Stock > 0)
@@ -46,7 +46,6 @@
                 @endforeach
             </div>
         </div>
-
     </div>
 </div>
 
@@ -57,4 +56,5 @@
 <template id="product-modal-template">
     @include('components.product_modal', ['modalProduct' => null])
 </template>
+
 @include('layouts.footer_section')

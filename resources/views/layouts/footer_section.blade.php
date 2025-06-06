@@ -51,7 +51,7 @@
         <div>
             <ul class="flex flex-col items-center gap-5 font-bold md:flex-row md:gap-20">
                 <li>&#x2117; 2025 Brewtique. All rights reserve</li>
-                <li>Products</li>
+                <li><a href="/ProductsPage">Products</a> </li>
                 <li>About Us</li>
             </ul>
         </div>

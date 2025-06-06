@@ -13,7 +13,7 @@
             <div class="lg:flex-start flex w-full items-center justify-center md:justify-center lg:justify-start">
                 <button
                     class="text-txtPrimary bg-btnColor font-Primary hover:bg-btnColor2 rounded-lg px-7 py-1 text-lg font-black transition-colors duration-200 hover:scale-105 hover:shadow-xl">
-                    Order Now
+                    <a href="/ProductsPage">Order now</a>
                 </button>
             </div>
         </div>
