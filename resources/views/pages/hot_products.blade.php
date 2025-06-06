@@ -19,7 +19,7 @@
 
         <h1 class="mb-5 ml-20 mt-5 text-left text-3xl font-bold">Hot Drinks</h1>
         <div class="no-scrollbar bg-bgColor col-span-2 h-full max-h-screen overflow-y-auto">
-            <div class="Flex flex-wrap justify-center gap-4 p-2 md:p-4">
+            <div class="flex flex-wrap justify-center gap-4 p-2 md:p-4">
                 @foreach ($products as $product)
                     @if ($product->Stock > 0)
                         <div class="bg-bgPrimary hover:bg-btnColor/30 w-96 cursor-pointer rounded-lg shadow-md transition-transform duration-200 hover:scale-105 hover:shadow-xl"
