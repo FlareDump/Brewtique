@@ -64,4 +64,31 @@ class CartController extends Controller
             return response()->json(['success' => false, 'message' => 'Item not found.'], 404);
         }
     }
+
+    public function checkoutCart(Request $request)
+    {
+        $cartItems = \App\Models\Cart::all();
+        if ($cartItems->isEmpty()) {
+            return response()->json(['success' => false, 'message' => 'Cart is empty.'], 400);
+        }
+        foreach ($cartItems as $item) {
+            \App\Models\Orders::create([
+                'cartID' => $item->cartID,
+                'ImagePath' => $item->ImagePath,
+                'ProductName' => $item->ProductName,
+                'ProdPrice' => $item->ProdPrice,
+                'CupSize' => $item->CupSize,
+                'CupSizePrice' => $item->CupSizePrice,
+                'Milk' => $item->Milk,
+                'MilkPrice' => $item->MilkPrice,
+                'Addon' => $item->Addon,
+                'AddonPrice' => $item->AddonPrice,
+                'Quantity' => $item->Quantity,
+                'TotalPrice' => $item->TotalPrice,
+                'PurchaseDate' => now(),
+            ]);
+        }
+        \App\Models\Cart::truncate();
+        return response()->json(['success' => true]);
+    }
 }

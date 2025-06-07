@@ -30,3 +30,4 @@ Route::post('/Login', [UserController::class, 'loginPost']);
 Route::post('/user/update', [UserController::class, 'updateProfile']);
 Route::post('/addCart', [CartController::class, 'addtocart'])->name('cart.add');
 Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.delete');
+Route::post('/checkout-cart', [App\Http\Controllers\CartController::class, 'checkoutCart'])->name('cart.checkout');

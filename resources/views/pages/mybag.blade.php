@@ -71,7 +71,7 @@
                         <div class="bg-bgColor flex w-full gap-3 rounded-md p-4 shadow-sm">
                             <div>
                                 <img src="{{ $item->ImagePath ?? asset('images/best_seller1.png') }}"
-                                    alt="{{ $item->ProductName ?? 'N/A' }}" class="h-40 w-48 rounded-lg object-cover" />
+                                    alt="{{ $item->ProductName ?? 'N/A' }}" class="h-50 w-60 rounded-lg object-cover" />
                             </div>
                             {{-- Bag Card Labels --}}
                             <div class="flex w-full flex-col gap-1">
@@ -128,7 +128,7 @@
                 </div> <!-- End of Bag Items List -->
                 <!-- Sticky Total and Checkout Bar INSIDE main content -->
                 <div class="border-txtSecondary/40 flex w-full justify-end border-t bg-[#FFE4C2] px-6 py-3 shadow-lg md:px-12"
-                    id="stickyCheckoutBar" style="position:sticky; bottom:0; left:0; right:0; z-index:30;">
+                    id="stickyCheckoutBar" style="position:relative; z-index:30; background: #FFE4C2;">
                     <div class="flex flex-col items-end gap-1 md:flex-row md:items-center md:gap-6">
                         <div class="flex items-center gap-2">
                             <span class="font-Primary text-lg font-bold">Items:</span>
@@ -150,7 +150,10 @@
         </div>
 </section>
 
-@include('layouts.footer_section')
+<div class="mt-125 md:mt-10 lg:mt-10">
+    @extends('layouts.footer_section')
+</div>
+
 @vite('resources/js/app.js')
 
 <!-- Delete Confirmation Modal -->
@@ -168,6 +171,37 @@
             <button id="deleteCartConfirmBtn"
                 class="bg-btnColor hover:bg-txtHighlighted rounded px-6 py-2 font-bold text-white">Remove</button>
         </div>
+    </div>
+</div>
+
+<!-- Checkout Confirmation Modal -->
+<div id="checkoutConfirmModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40">
+    <div
+        class="pointer-events-auto flex flex-col items-center justify-center rounded-xl bg-[#FDECCB] px-8 py-10 shadow-xl">
+        <div class="mb-4">
+            <span class="bg-txtHighlighted flex h-20 w-20 items-center justify-center rounded-full">
+                <i class="fa-solid fa-bag-shopping text-4xl text-white"></i>
+            </span>
+        </div>
+        <div class="mb-4 text-center text-xl font-semibold text-black">Confirm your order?</div>
+        <div class="flex gap-4">
+            <button id="checkoutCancelBtn"
+                class="bg-txtPrimary rounded px-6 py-2 font-bold text-black hover:bg-gray-200">Cancel</button>
+            <button
+                class="checkout-confirm-btn bg-btnColor hover:bg-txtHighlighted rounded px-6 py-2 font-bold text-white">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<!-- Ordered Successfully Modal -->
+<div id="orderSuccessModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40">
+    <div class="flex flex-col items-center justify-center rounded-xl bg-[#FDECCB] px-8 py-10 shadow-xl">
+        <div class="mb-4">
+            <span class="bg-txtHighlighted flex h-20 w-20 items-center justify-center rounded-full">
+                <i class="fa-solid fa-circle-check text-4xl text-white"></i>
+            </span>
+        </div>
+        <div class="mb-4 text-center text-2xl font-bold text-black">Ordered successfully!</div>
     </div>
 </div>
 
@@ -219,5 +253,55 @@
                 formToDelete = null;
             });
         }
+
+        // Checkout modal logic
+        const checkoutBtn = document.querySelector('#stickyCheckoutBar button');
+        const checkoutModal = document.getElementById('checkoutConfirmModal');
+        const checkoutCancelBtn = document.getElementById('checkoutCancelBtn');
+        const orderSuccessModal = document.getElementById('orderSuccessModal');
+        if (checkoutBtn && checkoutModal) {
+            checkoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                checkoutModal.classList.remove('hidden');
+                checkoutModal.classList.add('flex');
+            });
+        }
+        if (checkoutCancelBtn) {
+            checkoutCancelBtn.addEventListener('click', function() {
+                checkoutModal.classList.add('hidden');
+                checkoutModal.classList.remove('flex');
+            });
+        }
+        document.querySelectorAll('.checkout-confirm-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                fetch('/checkout-cart', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')
+                                .content,
+                            'Accept': 'application/json',
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Show success modal, then reload after 4 seconds
+                            if (orderSuccessModal) {
+                                orderSuccessModal.classList.remove('hidden');
+                                orderSuccessModal.classList.add('flex');
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1500);
+                            } else {
+                                window.location.reload();
+                            }
+                        } else {
+                            alert('Checkout failed.');
+                        }
+                    });
+                checkoutModal.classList.add('hidden');
+                checkoutModal.classList.remove('flex');
+            });
+        });
     });
 </script>

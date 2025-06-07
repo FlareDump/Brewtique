@@ -38,6 +38,23 @@ return new class extends Migration {
             $table->timestamp('AddedAt')->nullable();
         });
 
+        Schema::create('Orders', function (Blueprint $table) {
+            $table->bigIncrements('OrderID'); // Add autoincrement primary key
+            $table->bigInteger('cartID')->unsigned();
+            $table->string('ImagePath', 255)->nullable();
+            $table->string('ProductName', 255)->nullable();
+            $table->decimal('ProdPrice', 8, 2)->nullable();
+            $table->string('CupSize', 255)->nullable();
+            $table->decimal('CupSizePrice', 10, 2)->nullable();
+            $table->string('Milk', 255)->nullable();
+            $table->decimal('MilkPrice', 10, 2)->nullable();
+            $table->string('Addon', 255)->nullable();
+            $table->decimal('AddonPrice', 10, 2)->nullable();
+            $table->integer('Quantity')->default(1);
+            $table->decimal('TotalPrice', 10, 2)->nullable();
+            $table->timestamp('PurchaseDate')->default(DB::raw('CURRENT_TIMESTAMP'));
+        });
+
     }
 
     public function down(): void

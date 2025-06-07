@@ -496,11 +496,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (successModal) {
                 successModal.classList.remove('hidden');
                 successModal.classList.add('flex');
-                setTimeout(() => {
-                    successModal.classList.add('hidden');
-                    successModal.classList.remove('flex');
+                setTimeout(function() {
                     window.location.reload();
-                }, 20000); // 3 seconds (3000ms)
+                }, 1500);
             }
         }
         // Pastry modal Add to Order
