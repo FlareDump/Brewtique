@@ -489,16 +489,19 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.addEventListener('click', function(e) {
         // Product modal Add to Order
         if (
-            e.target.matches('#productModalContent .bg-txtHighlighted') ||
-            (e.target.closest && e.target.closest('#productModalContent .bg-txtHighlighted'))
+            e.target.matches('#productModalForm button[type="submit"], #productModalForm button[type="submit"] *')
         ) {
-            e.preventDefault();
-            const productModal = document.getElementById('productModal');
-            if (productModal) {
-                productModal.classList.add('hidden');
-                productModal.classList.remove('flex');
+            // Show success modal
+            const successModal = document.getElementById('successBagModal');
+            if (successModal) {
+                successModal.classList.remove('hidden');
+                successModal.classList.add('flex');
+                setTimeout(() => {
+                    successModal.classList.add('hidden');
+                    successModal.classList.remove('flex');
+                    window.location.reload();
+                }, 20000); // 3 seconds (3000ms)
             }
-            showSuccessBagModal();
         }
         // Pastry modal Add to Order
         if (

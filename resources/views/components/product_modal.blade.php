@@ -65,7 +65,7 @@
         <h3 class="font-bold">Cup Size</h3>
         <div class="flex flex-wrap gap-x-3 gap-y-1">
             <label>
-                <input type="radio" name="cup_size" value="{{ $cupSizes[0]['CupSize'] }}">
+                <input type="radio" name="cup_size" value="{{ $cupSizes[0]['CupSize'] }}" checked>
                 {{ $cupSizes[0]['CupSize'] }} - ₱{{ number_format($cupSizes[0]['CupSizePrice'], 2) }}
             </label><br>
 
@@ -84,7 +84,7 @@
         <h3 class="font-bold">Milk Options</h3>
         <div class="flex flex-wrap gap-x-3 gap-y-1">
             <label>
-                <input type="radio" name="milk" value="{{ $milks[0]['MilkName'] }}">
+                <input type="radio" name="milk" value="{{ $milks[0]['MilkName'] }}" checked>
                 {{ $milks[0]['MilkName'] }} - ₱{{ number_format($milks[0]['MilkPrice'], 2) }}
             </label>
 
@@ -149,5 +149,17 @@
         </div>
     </div>
 </form>
+
+<!-- Success Bag Modal -->
+<div id="successBagModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40">
+    <div class="flex flex-col items-center justify-center rounded-xl bg-[#FDECCB] px-8 py-10 shadow-xl">
+        <div class="mb-4">
+            <span class="flex h-20 w-20 items-center justify-center rounded-full bg-[#E09B23]">
+                <i class="fa-solid fa-check text-4xl text-white"></i>
+            </span>
+        </div>
+        <div class="text-center text-xl font-semibold text-black">Successfully added to your<br>Bag.</div>
+    </div>
+</div>
 
 @vite(['resources/js/app.js'])

@@ -15,7 +15,7 @@ Route::get('/SignIn', [PageController::class, 'signin']);
 Route::get('/Login', [PageController::class, 'login']);
 Route::get('/AllProducts', [PageController::class, 'allproducts'])->name('all.products');
 Route::get('/ColdProductsPage', [PageController::class, 'coldproducts'])->name('cold.products');
-Route::get('/PastryProductsPage', [PageController::class, 'pastryproducts'])->name('pastries.products');
+
 Route::get('/HotProductsPage', [PageController::class, 'hotproducts'])->name('hot.products');
 Route::get('/Dashboard/User', [PageController::class, 'userDashboard']);
 Route::get('/Dashboard/Order-History', [PageController::class, 'orderHistory']);
@@ -29,3 +29,4 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/Login', [UserController::class, 'loginPost']);
 Route::post('/user/update', [UserController::class, 'updateProfile']);
 Route::post('/addCart', [CartController::class, 'addtocart'])->name('cart.add');
+Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.delete');

@@ -53,4 +53,15 @@ class CartController extends Controller
 
         return redirect()->route('all.products')->with('success', 'Product added to cart!');
     }
+
+    public function destroy($id)
+    {
+        $cartItem = Cart::find($id);
+        if ($cartItem) {
+            $cartItem->delete();
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Item not found.'], 404);
+        }
+    }
 }

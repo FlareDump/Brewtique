@@ -23,6 +23,7 @@ return new class extends Migration {
         });
 
         Schema::create('Cart', function (Blueprint $table) {
+            $table->bigIncrements('cartID'); // Add autoincrement primary key
             $table->string('ImagePath', 255)->nullable();
             $table->string('ProductName', 255)->nullable();
             $table->decimal('ProdPrice', 8, 2)->nullable();

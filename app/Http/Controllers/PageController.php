@@ -84,18 +84,6 @@ class PageController extends Controller
         }
         return view('pages.cold_products', compact('products'));
     }
-    public function pastryproducts()
-    {
-        // Get the ProductCategory code for 'Pastries'
-        $pastriesCategory = \App\Models\ProductCategory::where('CategoryName', 'Pastries')->first();
-        $products = collect();
-        if ($pastriesCategory) {
-            $products = \App\Models\Product::with('category')
-                ->where('ProdCatCode', $pastriesCategory->ProdCatCode)
-                ->get();
-        }
-        return view('pages.pastries_products', compact('products'));
-    }
 
     public function allproducts()
     {

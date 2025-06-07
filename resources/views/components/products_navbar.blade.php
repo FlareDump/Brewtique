@@ -21,8 +21,6 @@
                             data-nav="hot">Hot Drinks</a>
                         <a href="{{ route('cold.products') }}" class="product-nav-link px-4 py-3 text-white"
                             data-nav="cold">Cold Drinks</a>
-                        <a href="{{ route('pastries.products') }}" class="product-nav-link px-4 py-3 text-white"
-                            data-nav="pastry">Pastries</a>
                     </div>
                 </div>
             </div>
@@ -35,8 +33,6 @@
                         Drinks</button></a>
                 <a href="{{ route('cold.products') }}" class="product-nav-link text-white" data-nav="cold"><button>Cold
                         Drinks</button></a>
-                <a href="{{ route('pastries.products') }}" class="product-nav-link text-white"
-                    data-nav="pastry"><button>Pastries</button></a>
             </div>
         </div>
         <!-- Right: Bag Icon (always visible) -->

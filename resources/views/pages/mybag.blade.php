@@ -61,58 +61,89 @@
             <div class="flex h-full flex-col md:col-span-5">
                 <h2 class="font-Primary mb-3 text-2xl font-bold">Your Bag</h2>
                 {{-- Bag Items List --}}
-                <div class="no-scrollbar flex w-full flex-1 flex-col gap-3 overflow-y-auto">
-                    {{-- Card --}}
-                    <div class="bg-bgColor flex w-full gap-3 rounded-md p-4 shadow-sm">
-                        <div>
-                            <img src="{{ asset('images/best_seller1.png') }}" alt="Mocha Vanilla Frappe"
-                                class="w-42 h-40 rounded-lg object-cover" />
+                <div class="no-scrollbar flex max-h-[70vh] min-h-0 w-full flex-1 flex-col gap-3 overflow-y-auto">
+                    {{-- Bag Card --}}
+                    @php
+                        use App\Models\Cart;
+                        $cartItems = Cart::all();
+                    @endphp
+                    @foreach ($cartItems as $item)
+                        <div class="bg-bgColor flex w-full gap-3 rounded-md p-4 shadow-sm">
+                            <div>
+                                <img src="{{ $item->ImagePath ?? asset('images/best_seller1.png') }}"
+                                    alt="{{ $item->ProductName ?? 'N/A' }}" class="h-40 w-48 rounded-lg object-cover" />
+                            </div>
+                            {{-- Bag Card Labels --}}
+                            <div class="flex w-full flex-col gap-1">
+                                <div class="flex w-full justify-between">
+                                    <h3 class="font-Primary text-3xl font-bold">{{ $item->ProductName ?? 'N/A' }}</h3>
+                                    <form method="POST" action="{{ route('cart.delete', $item->cartID) }}"
+                                        class="delete-cart-item-form" style="display:inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="delete-cart-btn transition hover:text-red-600 focus:outline-none active:scale-90"
+                                            title="Remove from bag">
+                                            <i class="fa-regular fa-trash-can pointer-events-none text-2xl"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="flex w-full justify-between">
+                                    <h3 class="font-Primary text-lg font-medium">Size: <span
+                                            class="font-Primary text-md">{{ $item->CupSize ?? 'N/A' }}</span></h3>
+                                    <span
+                                        class="font-Primary text-md font-medium">₱{{ $item->CupSizePrice !== null ? number_format($item->CupSizePrice, 2) : 'N/A' }}</span>
+                                </div>
+                                <div class="flex w-full justify-between">
+                                    <h3 class="font-Primary text-lg font-medium">Milk Options: <span
+                                            class="font-Primary text-md">{{ $item->Milk ?? 'N/A' }}</span></h3>
+                                    <span
+                                        class="font-Primary text-md font-medium">₱{{ $item->MilkPrice !== null ? number_format($item->MilkPrice, 2) : 'N/A' }}</span>
+                                </div>
+                                <div class="flex w-full justify-between">
+                                    <h3 class="font-Primary text-lg font-medium">Add Ons: <span
+                                            class="font-Primary text-md">{{ $item->Addon ?? 'N/A' }}</span></h3>
+                                    <span
+                                        class="font-Primary text-md font-medium">₱{{ $item->AddonPrice !== null ? number_format($item->AddonPrice, 2) : 'N/A' }}</span>
+                                </div>
+                                <div class="flex w-full justify-between">
+                                    <h3 class="font-Primary text-lg font-medium">Product Price: <span
+                                            class="font-Primary text-md">{{ $item->ProdPrice ?? 'N/A' }}</span></h3>
+                                    <span
+                                        class="font-Primary text-md font-medium">₱{{ $item->ProdPrice !== null ? number_format($item->ProdPrice, 2) : 'N/A' }}</span>
+                                </div>
+                                <div class="flex w-full justify-between">
+                                    <h3 class="font-Primary text-lg font-medium">Quantity: <span
+                                            class="font-Primary text-md">{{ $item->Quantity ?? 'N/A' }}</span></h3>
+                                </div>
+                                <div class="flex w-full justify-end">
+                                    <h3 class="font-Primary text-2xl font-bold">Total: <span
+                                            class="font-Primary text-txtHighlighted text-2xl">₱{{ $item->TotalPrice !== null ? number_format($item->TotalPrice, 2) : 'N/A' }}</span>
+                                    </h3>
+                                </div>
+                            </div>
+                            {{-- End of Bag Card --}}
                         </div>
-                        {{-- Bag Card --}}
-                        <div class="flex w-full flex-col gap-1">
-                            <div class="flex w-full justify-between">
-                                <h3 class="font-Primary text-3xl font-bold">Product Name</h3>
-                                <i class="fa-regular fa-trash-can text-2xl"></i>
-                            </div>
-                            <div class="flex w-full justify-between">
-                                <h3 class="font-Primary text-lg font-medium">Size: <span
-                                        class="font-Primary text-md">Medium</span></h3>
-                                <span class="font-Primary text-md font-medium">₱0.00</span>
-                            </div>
-                            <div class="flex w-full justify-between">
-                                <h3 class="font-Primary text-lg font-medium">Milk Options: <span
-                                        class="font-Primary text-md">Whole Milk</span></h3>
-                                <span class="font-Primary text-md font-,e">₱0.00</span>
-                            </div>
-                            <div class="flex w-full justify-between">
-                                <h3 class="font-Primary text-lg font-medium">Add Ons: <span
-                                        class="font-Primary text-md">Whipped Cream</span></h3>
-                                <span class="font-Primary text-md font-,e">₱0.00</span>
-                            </div>
-                            <div class="flex w-full justify-end">
-                                <h3 class="font-Primary text-2xl font-bold">Total: <span
-                                        class="font-Primary text-txtHighlighted text-2xl">₱0.00</span></h3>
-                            </div>
+                    @endforeach
+                </div> <!-- End of Bag Items List -->
+                <!-- Sticky Total and Checkout Bar INSIDE main content -->
+                <div class="border-txtSecondary/40 flex w-full justify-end border-t bg-[#FFE4C2] px-6 py-3 shadow-lg md:px-12"
+                    id="stickyCheckoutBar" style="position:sticky; bottom:0; left:0; right:0; z-index:30;">
+                    <div class="flex flex-col items-end gap-1 md:flex-row md:items-center md:gap-6">
+                        <div class="flex items-center gap-2">
+                            <span class="font-Primary text-lg font-bold">Items:</span>
+                            <span class="text-txtHighlighted font-Primary text-2xl font-bold">
+                                {{ $cartItems->count() }}
+                            </span>
                         </div>
-                        {{-- End of Bag Card --}}
-
-
-                    </div>
-                    <!-- Sticky Total and Checkout Bar INSIDE main content -->
-                    <div class="border-txtSecondary/40 sticky top-0 z-30 flex w-full justify-end border-t bg-[#FFE4C2] px-6 py-3 shadow-lg md:px-12"
-                        id="stickyCheckoutBar">
-                        <div class="flex flex-col items-end gap-1 md:flex-row md:items-center md:gap-6">
-                            <div class="flex items-center gap-2">
-                                <span class="font-Primary text-lg font-bold">Items:</span>
-                                <span class="text-txtHighlighted font-Primary text-2xl font-bold">2</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="font-Primary text-lg font-bold">Total:</span>
-                                <span class="text-txtHighlighted font-Primary text-2xl font-bold">₱300.00</span>
-                            </div>
-                            <button
-                                class="bg-txtHighlighted hover:bg-txtSecondary ml-0 mt-2 rounded-md px-8 py-2 text-lg font-medium text-white transition md:ml-6 md:mt-0">Checkout</button>
+                        <div class="flex items-center gap-2">
+                            <span class="font-Primary text-lg font-bold">Total:</span>
+                            <span class="text-txtHighlighted font-Primary text-2xl font-bold">₱
+                                {{ number_format($cartItems->sum('TotalPrice'), 2) }}
+                            </span>
                         </div>
+                        <button
+                            class="bg-txtHighlighted hover:bg-txtSecondary ml-0 mt-2 rounded-md px-8 py-2 text-lg font-medium text-white transition md:ml-6 md:mt-0">Checkout</button>
                     </div>
                 </div>
             </div>
@@ -121,3 +152,72 @@
 
 @include('layouts.footer_section')
 @vite('resources/js/app.js')
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteCartModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40">
+    <div class="flex flex-col items-center justify-center rounded-xl bg-[#FDECCB] px-8 py-10 shadow-xl">
+        <div class="mb-4">
+            <span class="bg-txtHighlighted flex h-20 w-20 items-center justify-center rounded-full">
+                <i class="fa-solid fa-trash text-4xl text-white"></i>
+            </span>
+        </div>
+        <div class="mb-4 text-center text-xl font-semibold text-black">Remove this item from your bag?</div>
+        <div class="flex gap-4">
+            <button id="deleteCartCancelBtn"
+                class="bg-txtPrimary rounded px-6 py-2 font-bold text-black hover:bg-gray-200">Cancel</button>
+            <button id="deleteCartConfirmBtn"
+                class="bg-btnColor hover:bg-txtHighlighted rounded px-6 py-2 font-bold text-white">Remove</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let formToDelete = null;
+        const modal = document.getElementById('deleteCartModal');
+        const cancelBtn = document.getElementById('deleteCartCancelBtn');
+        const confirmBtn = document.getElementById('deleteCartConfirmBtn');
+
+        document.querySelectorAll('.delete-cart-item-form').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                formToDelete = form;
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                }
+            });
+        });
+
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                formToDelete = null;
+            });
+        }
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', function() {
+                if (!formToDelete) return;
+                fetch(formToDelete.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': formToDelete.querySelector('[name=_token]').value,
+                            'Accept': 'application/json',
+                        },
+                        body: new FormData(formToDelete)
+                    })
+                    .then(res => {
+                        if (res.ok) {
+                            window.location.reload(); // Reload immediately after successful delete
+                        } else {
+                            alert('Failed to delete item.');
+                        }
+                    });
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                formToDelete = null;
+            });
+        }
+    });
+</script>

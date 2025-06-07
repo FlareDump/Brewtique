@@ -27,4 +27,8 @@ class Cart extends Model
 
     // Disable timestamps if not using created_at/updated_at
     public $timestamps = false;
+
+    protected $primaryKey = 'cartID'; // Set primary key to cartID
+    public $incrementing = true;
+    protected $keyType = 'int';
 }
