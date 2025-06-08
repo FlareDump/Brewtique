@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -25,6 +26,9 @@ class CartController extends Controller
             'AddedAt' => 'nullable|string',
         ]);
 
+        // Get the authenticated user's ID, or null if not logged in
+        $user_id = $request->input('user_id') ?? Auth::id();
+
         // Convert AddedAt to MySQL datetime format if present and not already formatted
         if (!empty($validated['AddedAt'])) {
             try {
@@ -37,6 +41,7 @@ class CartController extends Controller
         }
 
         Cart::create([
+            'user_id' => $user_id,
             'ProductName' => $validated['ProductName'],
             'ImagePath' => $validated['ProductImage'] ?? null,
             'ProdPrice' => $validated['ProductPrice'],
@@ -67,13 +72,15 @@ class CartController extends Controller
 
     public function checkoutCart(Request $request)
     {
-        $cartItems = \App\Models\Cart::all();
+        $userId = Auth::id();
+        $cartItems = \App\Models\Cart::where('user_id', $userId)->get();
         if ($cartItems->isEmpty()) {
             return response()->json(['success' => false, 'message' => 'Cart is empty.'], 400);
         }
         foreach ($cartItems as $item) {
             \App\Models\Orders::create([
                 'cartID' => $item->cartID,
+                'user_id' => $userId,
                 'ImagePath' => $item->ImagePath,
                 'ProductName' => $item->ProductName,
                 'ProdPrice' => $item->ProdPrice,
@@ -88,7 +95,8 @@ class CartController extends Controller
                 'PurchaseDate' => now(),
             ]);
         }
-        \App\Models\Cart::truncate();
+        // Only delete the checked-out user's cart items
+        \App\Models\Cart::where('user_id', $userId)->delete();
         return response()->json(['success' => true]);
     }
 }

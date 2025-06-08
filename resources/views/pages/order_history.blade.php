@@ -65,7 +65,8 @@
                 {{-- History --}}
                 @php
                     use App\Models\Orders;
-                    $orders = Orders::all();
+                    use Illuminate\Support\Facades\Auth;
+                    $orders = Orders::where('user_id', Auth::id())->get();
                 @endphp
                 <div class="bg-bgLight rounded-md p-6 shadow-sm">
                     <h2 class="bg-bgColor sticky top-0 z-10 mb-4 rounded-t-md p-4 text-2xl font-bold backdrop-blur-sm">

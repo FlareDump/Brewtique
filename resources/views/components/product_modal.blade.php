@@ -59,6 +59,8 @@
         <input type="hidden" name="AddonPrice" id="modalAddonPriceInput" value="">
         <input type="hidden" name="TotalPrice" id="modalTotalPriceInput" value="">
         <input type="hidden" name="AddedAt" id="modalAddedAtInput" value="">
+        <input type="hidden" name="user_id" id="modalUserIDInput"
+            value="{{ auth()->check() ? auth()->user()->id : '' }}">
 
         <!-- Customization Options -->
         {{-- Cup Size --}}
@@ -145,7 +147,7 @@
         <div class="flex items-center justify-center gap-4">
             <button type="submit"
                 class="bg-txtHighlighted hover:bg-txtSecondary rounded-lg px-6 py-3 text-lg font-bold text-white transition">Add
-                to Order</button>
+                to Bag</button>
         </div>
     </div>
 </form>

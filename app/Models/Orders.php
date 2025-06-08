@@ -14,6 +14,7 @@ class Orders extends Model
 
    protected $fillable = [
       'cartID',
+      'user_id',
       'ImagePath',
       'ProductName',
       'ProdPrice',

@@ -65,7 +65,8 @@
                     {{-- Bag Card --}}
                     @php
                         use App\Models\Cart;
-                        $cartItems = Cart::all();
+                        use Illuminate\Support\Facades\Auth;
+                        $cartItems = Cart::where('user_id', Auth::id())->get();
                     @endphp
                     @foreach ($cartItems as $item)
                         <div class="bg-bgColor flex w-full gap-3 rounded-md p-4 shadow-sm">
