@@ -30,7 +30,7 @@ class CartController extends Controller
         // Get the authenticated user's ID, or null if not logged in
         $user_id = $request->input('user_id') ?? Auth::id();
 
-        // Convert AddedAt to MySQL datetime format if present and not already formatted
+        // Convert AddedAt to MySQL datetime format
         if (!empty($validated['AddedAt'])) {
             try {
                 $addedAt = Carbon::parse($validated['AddedAt'])->format('Y-m-d H:i:s');

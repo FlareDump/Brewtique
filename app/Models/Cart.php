@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    // Specify the table name if not the plural of the model name
     protected $table = 'cart';
 
-    // Allow mass assignment for these fields
     protected $fillable = [
         'user_id',
         'ProductName',
@@ -26,10 +24,9 @@ class Cart extends Model
         'AddedAt',
     ];
 
-    // Disable timestamps if not using created_at/updated_at
     public $timestamps = false;
 
-    protected $primaryKey = 'cartID'; // Set primary key to cartID
+    protected $primaryKey = 'cartID';
     public $incrementing = true;
     protected $keyType = 'int';
 }

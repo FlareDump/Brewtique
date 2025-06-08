@@ -23,8 +23,8 @@ return new class extends Migration {
         });
 
         Schema::create('Cart', function (Blueprint $table) {
-            $table->bigIncrements('cartID'); // Add autoincrement primary key
-            $table->unsignedBigInteger('user_id')->nullable(); // Use user_id for user reference
+            $table->bigIncrements('cartID');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('ImagePath', 255)->nullable();
             $table->string('ProductName', 255)->nullable();
             $table->decimal('ProdPrice', 8, 2)->nullable();
@@ -40,9 +40,9 @@ return new class extends Migration {
         });
 
         Schema::create('Orders', function (Blueprint $table) {
-            $table->bigIncrements('OrderID'); // Add autoincrement primary key
+            $table->bigIncrements('OrderID');
             $table->bigInteger('cartID')->unsigned();
-            $table->unsignedBigInteger('user_id')->nullable(); // Use user_id for user reference
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('ImagePath', 255)->nullable();
             $table->string('ProductName', 255)->nullable();
             $table->decimal('ProdPrice', 8, 2)->nullable();

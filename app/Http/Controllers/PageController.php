@@ -92,9 +92,7 @@ class PageController extends Controller
         return view('pages.all_products', compact('products'));
     }
 
-    /**
-     * Handle add to cart POST from product modal
-     */
+    //add to cart POST from product modal
     public function addToCart(Request $request)
     {
         $validated = $request->validate([
@@ -130,7 +128,8 @@ class PageController extends Controller
     public function adminDashboard()
     {
         $totalProducts = \App\Models\Product::count();
-        $totalOrders = \App\Models\Orders::count();
+        // Count distinct PurchaseDate values for totalOrders
+        $totalOrders = \App\Models\Orders::distinct('PurchaseDate')->count('PurchaseDate');
         $totalUsers = \App\Models\User::count();
         // Calculate total sales: (ProdPrice + CupSizePrice + MilkPrice + AddonPrice) * Quantity for each order
         $totalSales = \App\Models\Orders::all()->sum(function ($order) {
@@ -193,7 +192,7 @@ class PageController extends Controller
             $image = $request->file('ImagePath');
             $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('products'), $filename);
-            $imagePath = 'products/' . $filename; // Remove /public for storage
+            $imagePath = 'products/' . $filename;
         } else {
             $imagePath = null;
         }

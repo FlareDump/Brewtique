@@ -6,7 +6,8 @@
 @section('title', 'Admin - Orders')
 
 <section class="font-Primary bg-bgPrimary min-h-screen py-10">
-    <div class="mt-15 mx-auto flex w-full max-w-7xl flex-col justify-center gap-8 px-4 md:flex-row md:gap-10">
+    <div
+        class="mt-15 mx-auto flex h-[75vh] max-h-[75vh] w-full max-w-7xl flex-col justify-center gap-8 px-4 md:flex-row"">
         <!-- Sidebar -->
         <aside
             class="bg-bgColor mb-8 flex w-full flex-row gap-4 rounded-xl p-6 shadow md:mb-0 md:w-64 md:flex-col md:gap-8">

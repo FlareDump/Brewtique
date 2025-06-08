@@ -7,7 +7,7 @@
 
 <section class="font-Primary bg-bgPrimary min-h-screen py-10">
     <div
-        class="mt-15 mx-auto flex h-[80vh] max-h-[80vh] w-full max-w-7xl flex-col justify-center gap-8 px-4 md:flex-row">
+        class="mt-15 mx-auto flex h-[75vh] max-h-[75vh] w-full max-w-7xl flex-col justify-center gap-8 px-4 md:flex-row">
         <!-- Sidebar -->
         <aside
             class="bg-bgColor mb-8 flex w-full flex-row gap-4 rounded-xl p-6 shadow md:mb-0 md:w-64 md:flex-col md:gap-8">
@@ -38,7 +38,7 @@
             </div>
         </aside>
         <!-- Main Content -->
-        <div class="flex-1">
+        <div class="flex-1 rounded-xl bg-white p-8 shadow">
             <h1 class="text-txtSecondary mb-8 text-3xl font-bold">Manage Users</h1>
             <div class="no-scrollbar max-h-[80vh] overflow-x-auto overflow-y-auto rounded-lg bg-white p-6 shadow">
                 <table class="min-w-full divide-y divide-gray-200">
