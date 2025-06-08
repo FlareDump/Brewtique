@@ -178,4 +178,40 @@ class PageController extends Controller
         $product->save();
         return redirect()->route('admin.products')->with('success', 'Product updated successfully!');
     }
+    public function storeProduct(Request $request)
+    {
+        $validated = $request->validate([
+            'ProdName' => 'required|string|max:100',
+            'ProdCatCode' => 'required|integer|exists:ProductCategory,ProdCatCode',
+            'ProdPrice' => 'required|numeric',
+            'Stock' => 'required|integer',
+            'ImagePath' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+        ]);
+
+        // Handle image upload
+        if ($request->hasFile('ImagePath')) {
+            $image = $request->file('ImagePath');
+            $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('products'), $filename);
+            $imagePath = 'products/' . $filename; // Remove /public for storage
+        } else {
+            $imagePath = null;
+        }
+
+        $product = new \App\Models\Product();
+        $product->ProdName = $validated['ProdName'];
+        $product->ProdCatCode = $validated['ProdCatCode'];
+        $product->ProdPrice = $validated['ProdPrice'];
+        $product->Stock = $validated['Stock'];
+        $product->ImagePath = $imagePath;
+        $product->save();
+
+        return redirect()->route('admin.products')->with('success', 'Product added successfully!');
+    }
+    public function deleteProduct($id)
+    {
+        $product = \App\Models\Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('admin.products')->with('success', 'Product deleted successfully!');
+    }
 }

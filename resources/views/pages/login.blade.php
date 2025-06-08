@@ -6,13 +6,14 @@
 <div class="bg-bgPrimary flex min-h-screen items-center justify-center">
     <div class="bg-icon inline-block rounded-lg shadow-2xl">
         <div class="bg-icon flex flex-row rounded-lg">
-            <!-- Left Section -->
-            <div class="flex w-[40%] items-center justify-center">
+            <!-- Left Section (hidden on small screens) -->
+            <div class="hidden w-[40%] items-center justify-center md:flex">
                 <img src="{{ asset('images/Coffee 2.svg') }}" alt="kape" class="md:size-86 lg:size-128">
             </div>
 
-            <!-- Right Section -->
-            <div class="bg-txtPrimary flex w-[60%] items-center justify-center rounded-l-[200px] px-10 py-10 pl-20">
+            <!-- Right Section (full width on small screens) -->
+            <div
+                class="bg-txtPrimary flex w-full items-center justify-center rounded-l-[200px] px-10 py-10 md:w-[60%] md:pl-20">
                 <div>
                     <!-- Logo, Title, and Greeting -->
                     <div class="flex items-center justify-center gap-3.5">

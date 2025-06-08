@@ -1,4 +1,5 @@
 @extends('layouts.layout')
+<link rel="icon" href="/icons/brewtique-icon.png">
 
 @include('components.admin_navbar')
 
@@ -59,7 +60,7 @@
                 <!-- Large widget row -->
                 <div class="mt-6 flex w-full justify-center">
                     <div
-                        class="flex w-full max-w-2xl flex-col items-center justify-center rounded-2xl border-4 border-green-400 bg-green-200 p-6 shadow-lg md:p-12">
+                        class="flex w-full max-w-full flex-col items-center justify-center rounded-2xl border-4 border-green-400 bg-green-200 p-6 shadow-lg md:p-12">
                         <h2 class="mb-4 text-2xl font-extrabold text-green-800 lg:text-5xl">Total Sales</h2>
                         <p class="break-words text-4xl font-black text-green-900 lg:text-8xl">
                             ₱{{ number_format($totalSales, 2) }}</p>

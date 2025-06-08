@@ -3,10 +3,11 @@
         class="grid min-h-screen grid-cols-1 gap-4 bg-[#f8f5f1] p-4 md:auto-rows-fr md:grid-cols-2 md:gap-6 md:p-8 lg:grid-cols-3 lg:grid-rows-2">
 
         {{-- Ramsay's Message --}}
-        <div
-            class="lg:min-h-auto relative flex min-h-[400px] flex-col items-center justify-between overflow-hidden rounded-2xl bg-[#4c280a] px-6 py-8 text-center text-white shadow-xl md:col-span-2 md:min-h-[500px] md:items-center md:px-8 md:py-10 md:text-center lg:col-span-1 lg:row-span-2 lg:px-10 lg:py-12">
+        <div class="fade-in-right lg:min-h-auto relative flex min-h-[400px] flex-col items-center justify-between overflow-hidden rounded-2xl bg-[#4c280a] px-6 py-8 text-center text-white shadow-xl md:col-span-2 md:min-h-[500px] md:items-center md:px-8 md:py-10 md:text-center lg:col-span-1 lg:row-span-2 lg:px-10 lg:py-12"
+            id="testimonial-ramsay">
             <div class="relative z-10 flex w-full flex-col items-center justify-center">
-                <h2 class="mb-5 text-2xl font-bold uppercase tracking-wide md:text-4xl lg:text-5xl">RAMSAY'S MESSAGE</h2>
+                <h2 class="mb-5 text-2xl font-bold uppercase tracking-wide md:text-4xl lg:text-5xl">RAMSAY'S MESSAGE
+                </h2>
                 <p class="mb-4 text-base opacity-90 md:max-w-xl md:text-xl lg:text-2xl">
                     At Brewtique, every roast tells a story. I've partnered to bring bold flavors, expert blends, and a
                     refined morning ritual.
@@ -23,8 +24,8 @@
         </div>
 
         {{-- Testimonial 1 --}}
-        <div
-            class="group flex min-h-[260px] flex-col items-center justify-between rounded-2xl bg-[#fff1db] px-5 py-6 text-[#4c280a] shadow-lg transition-all duration-300 hover:shadow-2xl sm:hover:scale-105 md:min-h-[300px] md:px-8 md:py-10 lg:px-10 lg:py-12">
+        <div class="fade-in-up group flex min-h-[260px] flex-col items-center justify-between rounded-2xl bg-[#fff1db] px-5 py-6 text-[#4c280a] shadow-lg transition-all duration-300 hover:shadow-2xl sm:hover:scale-105 md:min-h-[300px] md:px-8 md:py-10 lg:px-10 lg:py-12"
+            id="testimonial-1">
             <div class="items-left flex w-full flex-col">
                 <h3
                     class="mb-2 text-left text-xl font-bold transition-colors duration-200 group-hover:text-[#e19517] md:text-2xl lg:text-3xl">
@@ -38,20 +39,22 @@
         </div>
 
         {{-- Coffee Image 1 --}}
-        <div class="hidden items-center justify-center rounded-2xl bg-black p-4 shadow-lg lg:flex lg:p-4">
-            <img src="{{ asset('images/coffeeart.png') }}" alt="Coffee Beans"
-                class="h-full w-full scale-110 rounded-xl object-cover object-bottom transition-transform duration-300 md:max-h-[240px] lg:max-h-[300px]">
+        <div class="fade-in-left hidden max-h-[50vh] min-h-[50vh] w-full items-center justify-center rounded-2xl bg-black shadow-lg lg:flex"
+            id="testimonial-img-1">
+            <img src="{{ asset('products/iced_matcha.jpg') }}" alt="Coffee Best Seller 1"
+                class="h-full max-h-full w-full rounded-xl object-cover object-center transition-transform duration-300">
         </div>
 
         {{-- Coffee Image 2 --}}
-        <div class="hidden items-center justify-center rounded-2xl bg-black p-4 shadow-lg lg:flex lg:p-4">
-            <img src="{{ asset('images/coffeebeans.png') }}" alt="Coffee Art"
-                class="h-full w-full scale-110 rounded-xl object-cover object-bottom transition-transform duration-300 md:max-h-[240px] lg:max-h-[300px]">
+        <div class="fade-in-right hidden max-h-[50vh] min-h-[50vh] w-full items-center justify-center rounded-2xl bg-black shadow-lg lg:flex"
+            id="testimonial-img-2">
+            <img src="{{ asset('products/iced_chocolate.jpg') }}" alt="Americano Coffee"
+                class="h-full max-h-full w-full rounded-xl object-cover object-center transition-transform duration-300">
         </div>
 
         {{-- Testimonial 2 --}}
-        <div
-            class="group flex min-h-[260px] flex-col justify-between rounded-2xl bg-[#fff1db] px-5 py-6 text-[#4c280a] shadow-lg transition-all duration-300 hover:shadow-2xl sm:hover:scale-105 md:min-h-[300px] md:px-8 md:py-10 lg:px-10 lg:py-12">
+        <div class="fade-in-up group flex min-h-[260px] flex-col justify-between rounded-2xl bg-[#fff1db] px-5 py-6 text-[#4c280a] shadow-lg transition-all duration-300 hover:shadow-2xl sm:hover:scale-105 md:min-h-[300px] md:px-8 md:py-10 lg:px-10 lg:py-12"
+            id="testimonial-2">
             <div>
                 <h3
                     class="mb-2 text-xl font-bold transition-colors duration-200 group-hover:text-[#e19517] md:text-2xl lg:text-3xl">
@@ -65,3 +68,46 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Fade-in and fade-out on scroll for testimonial section (opposite direction)
+    window.addEventListener('DOMContentLoaded', function() {
+        function fadeInOutOppositeOnScroll(el, direction) {
+            if (!el) return;
+
+            function onScroll() {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('fade-in-visible');
+                    el.classList.remove('fade-in-out-opposite');
+                } else {
+                    el.classList.remove('fade-in-visible');
+                    el.classList.add('fade-in-out-opposite');
+                }
+            }
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+        }
+        fadeInOutOppositeOnScroll(document.getElementById('testimonial-ramsay'), 'right');
+        fadeInOutOppositeOnScroll(document.getElementById('testimonial-1'), 'up');
+        fadeInOutOppositeOnScroll(document.getElementById('testimonial-img-1'), 'left');
+        fadeInOutOppositeOnScroll(document.getElementById('testimonial-img-2'), 'right');
+        fadeInOutOppositeOnScroll(document.getElementById('testimonial-2'), 'up');
+    });
+</script>
+<style>
+    .fade-in-right.fade-in-out-opposite {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    .fade-in-left.fade-in-out-opposite {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    .fade-in-up.fade-in-out-opposite {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+</style>

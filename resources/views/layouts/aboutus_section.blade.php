@@ -1,6 +1,6 @@
 <section id="aboutus" class="min-h-screen py-10">
     <div class="flex min-h-screen flex-col items-center justify-center md:flex-row lg:flex-row">
-        <div class="mb-8 flex flex-1 justify-center md:mb-0">
+        <div class="fade-in-left mb-8 flex flex-1 justify-center md:mb-0" id="aboutus-image">
             <div x-data="{
                 images: [
                     '{{ asset('images/Coffee 1.png') }}',
@@ -38,17 +38,18 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-1 flex-col justify-center gap-4 px-4 text-center align-middle sm:px-8 md:text-left">
+        <div class="fade-in-right flex flex-1 flex-col justify-center gap-4 px-4 text-center align-middle sm:px-8 md:text-left"
+            id="aboutus-text">
             <div class="flex items-start justify-center md:items-start md:justify-start">
                 <h1 class="font-TitleFont text-txtSecondary text-4xl font-bold">About Us</h1>
             </div>
             <div>
-                <p class="text-txtExtra mt-4 text-justify text-lg md:text-justify lg:mr-20">
+                <p class="text-txtExtra mt-4 text-lg lg:mr-20">
                     Brewtique is a coffee shop that offers a unique and personalized experience for coffee lovers. Our
                     mission is to provide high-quality coffee and create a welcoming environment where customers can
                     relax, socialize, and enjoy their favorite brews.
                 </p>
-                <p class="text-txtExtra mt-4 text-justify text-lg md:text-justify lg:mr-20">
+                <p class="text-txtExtra mt-4 text-lg lg:mr-20">
                     At Brewtique, it's not just about the coffee—it's about community. Our cozy, thoughtfully designed
                     space invites you to stay a while, connect with friends, or find inspiration in a quiet moment.
                     We're passionate about what we do, and we’re here to share that passion with you—one cup at a time.
@@ -58,3 +59,29 @@
     </div>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script>
+    // Fade-in and fade-out on scroll for about us image and text
+    window.addEventListener('DOMContentLoaded', function() {
+        const aboutusImage = document.getElementById('aboutus-image');
+        const aboutusText = document.getElementById('aboutus-text');
+
+        function fadeInOutOnScroll(el) {
+            if (!el) return;
+
+            function onScroll() {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('fade-in-visible');
+                    el.classList.remove('fade-in-out');
+                } else {
+                    el.classList.remove('fade-in-visible');
+                    el.classList.add('fade-in-out');
+                }
+            }
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+        }
+        fadeInOutOnScroll(aboutusImage);
+        fadeInOutOnScroll(aboutusText);
+    });
+</script>

@@ -7,7 +7,7 @@
     <div class="bg-txtPrimary inline-block rounded-lg shadow-2xl">
         <div class="bg-txtPrimary flex flex-row rounded-lg">
             <!-- Left Section: Sign-In Form -->
-            <div class="bg-txtPrimary w-1/2 rounded-lg px-10 py-10">
+            <div class="bg-txtPrimary w-full rounded-lg px-10 py-10 md:w-1/2">
                 <!-- Logo and Title -->
                 <div class="flex items-center justify-center gap-3.5">
                     <a href="/Home">
@@ -108,8 +108,9 @@
                 </form>
             </div>
 
-            <!-- Right Section: Image -->
-            <div class="bg-icon rounded-tb-lg flex w-1/2 items-center justify-center rounded-r-lg rounded-bl-[250px]">
+            <!-- Right Section: Image (hidden on small screens) -->
+            <div
+                class="bg-icon rounded-tb-lg hidden w-1/2 items-center justify-center rounded-r-lg rounded-bl-[250px] md:flex">
                 <img src="{{ asset('images/Coffee 1.png') }}" alt="" class="lg:size-128 md:size-86">
             </div>
         </div>

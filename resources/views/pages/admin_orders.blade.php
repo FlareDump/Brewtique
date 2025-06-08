@@ -1,11 +1,12 @@
 @extends('layouts.layout')
+<link rel="icon" href="/icons/brewtique-icon.png">
 
 @include('components.admin_navbar')
 
 @section('title', 'Admin - Orders')
 
 <section class="font-Primary bg-bgPrimary min-h-screen py-10">
-    <div class="mt-15 mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:flex-row md:gap-10">
+    <div class="mt-15 mx-auto flex w-full max-w-7xl flex-col justify-center gap-8 px-4 md:flex-row md:gap-10">
         <!-- Sidebar -->
         <aside
             class="bg-bgColor mb-8 flex w-full flex-row gap-4 rounded-xl p-6 shadow md:mb-0 md:w-64 md:flex-col md:gap-8">
@@ -59,6 +60,15 @@
                                 Total</th>
                             <th
                                 class="text-txtSecondary px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                Cup Size</th>
+                            <th
+                                class="text-txtSecondary px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                Milk</th>
+                            <th
+                                class="text-txtSecondary px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                Addon</th>
+                            <th
+                                class="text-txtSecondary px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 Date</th>
                         </tr>
                     </thead>
@@ -70,6 +80,14 @@
                                 <td class="px-6 py-4">{{ $order->ProductName }}</td>
                                 <td class="px-6 py-4">{{ $order->Quantity }}</td>
                                 <td class="px-6 py-4">₱{{ number_format($order->TotalPrice, 2) }}</td>
+                                <td class="px-6 py-4">{{ $order->CupSize ?? 'N/A' }} -
+                                    ₱{{ isset($order->CupSizePrice) ? number_format($order->CupSizePrice, 2) : '0.00' }}
+                                </td>
+                                <td class="px-6 py-4">{{ $order->Milk ?? 'N/A' }} -
+                                    ₱{{ isset($order->MilkPrice) ? number_format($order->MilkPrice, 2) : '0.00' }}</td>
+                                <td class="px-6 py-4">{{ $order->Addon ?? 'N/A' }} -
+                                    ₱{{ isset($order->AddonPrice) ? number_format($order->AddonPrice, 2) : '0.00' }}
+                                </td>
                                 <td class="px-6 py-4">{{ $order->PurchaseDate }}</td>
                             </tr>
                         @endforeach
