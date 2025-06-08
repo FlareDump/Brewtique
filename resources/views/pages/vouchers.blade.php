@@ -1,4 +1,5 @@
 @extends('layouts.layout')
+<link rel="icon" href="/icons/brewtique-icon.png">
 
 @auth
     @include('components.logged_navbar')

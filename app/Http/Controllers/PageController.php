@@ -127,4 +127,55 @@ class PageController extends Controller
         return redirect()->route('allproducts')->with('success', 'Added to cart!');
     }
 
+    public function adminDashboard()
+    {
+        $totalProducts = \App\Models\Product::count();
+        $totalOrders = \App\Models\Orders::count();
+        $totalUsers = \App\Models\User::count();
+        // Calculate total sales: (ProdPrice + CupSizePrice + MilkPrice + AddonPrice) * Quantity for each order
+        $totalSales = \App\Models\Orders::all()->sum(function ($order) {
+            $base = floatval($order->ProdPrice ?? 0);
+            $cup = floatval($order->CupSizePrice ?? 0);
+            $milk = floatval($order->MilkPrice ?? 0);
+            $addon = floatval($order->AddonPrice ?? 0);
+            $qty = intval($order->Quantity ?? 1);
+            return ($base + $cup + $milk + $addon) * $qty;
+        });
+        return view('pages.admin_dashboard', compact('totalProducts', 'totalOrders', 'totalUsers', 'totalSales'));
+    }
+    public function adminProducts()
+    {
+        $products = \App\Models\Product::with('category')->get();
+        return view('pages.admin_products', compact('products'));
+    }
+    public function adminOrders()
+    {
+        $orders = \App\Models\Orders::all();
+        return view('pages.admin_orders', compact('orders'));
+    }
+    public function adminUsers()
+    {
+        $users = \App\Models\User::all();
+        return view('pages.admin_users', compact('users'));
+    }
+
+    public function deleteUser($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.users')->with('success', 'User deleted successfully!');
+    }
+
+    public function updateProduct(Request $request, $id)
+    {
+        $product = \App\Models\Product::findOrFail($id);
+        $validated = $request->validate([
+            'ProdPrice' => 'required|numeric',
+            'Stock' => 'required|integer',
+        ]);
+        $product->ProdPrice = $validated['ProdPrice'];
+        $product->Stock = $validated['Stock'];
+        $product->save();
+        return redirect()->route('admin.products')->with('success', 'Product updated successfully!');
+    }
 }

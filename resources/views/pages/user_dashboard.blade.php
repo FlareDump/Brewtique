@@ -1,12 +1,12 @@
 @extends('layouts.layout')
-
+<link rel="icon" href="/icons/brewtique-icon.png">
 @auth
     @include('components.logged_navbar')
 @else
     @include('components.navbar')
 @endauth
 
-@section('title', 'User Dashboard')
+@section('title', 'My Account')
 <section class="font-Primary flex min-h-screen flex-col justify-between py-4 md:py-10">
     <div class="md:py-15 h-full w-full px-4 py-5 md:px-10">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-6">

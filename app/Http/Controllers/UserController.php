@@ -59,12 +59,15 @@ class UserController extends Controller
 
         if (auth()->attempt(['username' => $username, 'password' => $password], $remember)) {
             $request->session()->regenerate();
+            // Redirect admin user to admin dashboard
+            if (strtolower($username) === 'admin') {
+                return redirect('/Dashboard/Admin');
+            }
         } else {
             return back()->withErrors(['loginError' => 'Invalid credentials.']);
         }
 
         return redirect('/Home');
-
     }
 
     public function logout()

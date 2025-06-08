@@ -23,6 +23,15 @@ Route::get('/Dashboard/My-Bag', [PageController::class, 'mybag']);
 Route::get('/Dashboard/Notifications', [PageController::class, 'notification']);
 Route::get('/Dashboard/Vouchers', [PageController::class, 'voucher']);
 Route::get('/Splash', [PageController::class, 'splashscreen'])->name('splashscreen');
+Route::get('/Dashboard/Admin', [PageController::class, 'adminDashboard'])->name('adminDashboard');
+Route::get('/Dashboard/Admin/Products', [PageController::class, 'adminProducts'])->name('admin.products');
+Route::put('/Dashboard/Admin/Products/{id}', [PageController::class, 'updateProduct'])->name('admin.products.update');
+Route::delete('/Dashboard/Admin/Products/{id}', [PageController::class, 'deleteProduct'])->name('admin.products.delete');
+Route::get('/Dashboard/Admin/Orders', [PageController::class, 'adminOrders'])->name('admin.orders');
+Route::get('/Dashboard/Admin/Users', [PageController::class, 'adminUsers'])->name('admin.users');
+
+// Admin user management delete route only
+Route::delete('/Dashboard/Admin/Users/{id}', [PageController::class, 'deleteUser'])->name('admin.users.delete');
 
 Route::post('/SignIn', [UserController::class, 'signinPost']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
