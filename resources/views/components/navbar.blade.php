@@ -16,8 +16,8 @@
         </ul>
         <a href="/Splash">
             <button
-                class="border-txtTertiary text-txtTertiary rounded-lg border px-12 py-0.5 font-bold md:flex lg:flex">
-                Login
+                class="bg-btnColor hover:bg-btnColor2 text-txtPrimary font-Primary flex w-full items-center justify-center gap-3 rounded-md px-10 py-1.5 font-bold shadow transition-colors duration-200">
+                <i class="fa-solid fa-arrow-right-to-bracket text-2xl"></i> Login
             </button>
         </a>
     </div>

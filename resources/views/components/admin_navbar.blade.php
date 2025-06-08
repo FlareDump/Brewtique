@@ -11,7 +11,7 @@
         </button>
         <!-- Nav links -->
         <ul id="adminNavLinks"
-            class="font-Primary bg-bgPrimary absolute left-0 top-16 z-50 hidden w-full flex-col gap-4 rounded-b-lg p-4 text-lg font-bold text-black shadow md:static md:top-auto md:z-auto md:flex md:flex md:w-auto md:flex-row md:gap-0 md:gap-x-10 md:rounded-none md:bg-transparent md:p-0 md:shadow-none">
+            class="font-Primary bg-bgPrimary absolute left-0 top-16 z-50 hidden w-full flex-col gap-4 rounded-b-lg p-4 text-lg font-bold text-black shadow md:static md:top-auto md:z-auto md:flex md:w-auto md:flex-row md:gap-0 md:gap-x-10 md:rounded-none md:bg-transparent md:p-0 md:shadow-none">
             <li><a href="/Dashboard/Admin"
                     class="hover:text-txtHighlighted flex items-center gap-2 transition-colors"><i
                         class="fa-solid fa-gauge-high"></i> Dashboard</a></li>

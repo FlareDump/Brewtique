@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -78,6 +79,12 @@ class CartController extends Controller
             return response()->json(['success' => false, 'message' => 'Cart is empty.'], 400);
         }
         foreach ($cartItems as $item) {
+            // Deduct stock from Product table
+            $product = Product::where('ProdName', $item->ProductName)->first();
+            if ($product) {
+                $product->Stock = max(0, $product->Stock - $item->Quantity);
+                $product->save();
+            }
             \App\Models\Orders::create([
                 'cartID' => $item->cartID,
                 'user_id' => $userId,
