@@ -23,15 +23,23 @@
         <!-- User Icon and Dropdown Menu -->
         <div class="relative">
             <!-- User Icon Button -->
-            <button class="px-12 py-0.5 md:flex lg:flex" id="user-menu-button">
-                <i class="fa-solid fa-circle-user fa-2xl"></i>
+            <button
+                class="bg-btnColor hover:bg-btnColor/80 group relative flex items-center justify-center rounded-2xl px-10 py-5 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black"
+                id="user-menu-button">
+                <span class="absolute -right-1 -top-1 flex h-3 w-3">
+                    <span
+                        class="bg-txtHighlighted absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+                    <span class="bg-txtHighlighted relative inline-flex h-3 w-3 rounded-full"></span>
+                </span>
+                <i
+                    class="fa-solid fa-circle-user fa-2xl text-white transition-colors duration-200 group-hover:text-white"></i>
             </button>
 
             <!-- Dropdown Menu -->
             <div id="user-menu" class="bg-colorExtra absolute right-0 z-50 mt-2 hidden w-64 rounded-lg p-6 shadow-2xl">
                 <ul class="flex flex-col gap-4">
                     <li>
-                        <a href="Dashboard/User"
+                        <a href="/Dashboard/User"
                             class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-2 text-base transition-colors duration-200">
                             <i class="fa-regular fa-user text-xl"></i> My Account
                         </a>

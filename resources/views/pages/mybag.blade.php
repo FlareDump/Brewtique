@@ -65,70 +65,78 @@
                 <h2 class="font-Primary mb-3 text-2xl font-bold">Your Bag</h2>
                 {{-- Bag Items List --}}
                 <div class="no-scrollbar flex max-h-[70vh] min-h-0 w-full flex-1 flex-col gap-3 overflow-y-auto">
-                    {{-- Bag Card --}}
                     @php
                         use App\Models\Cart;
                         use Illuminate\Support\Facades\Auth;
                         $cartItems = Cart::where('user_id', Auth::id())->orderByDesc('AddedAt')->get();
                     @endphp
-                    @foreach ($cartItems as $item)
-                        <div class="bg-bgColor flex w-full gap-3 rounded-md p-4 shadow-sm">
-                            <div>
-                                <img src="{{ $item->ImagePath ?? asset('images/best_seller1.png') }}"
-                                    alt="{{ $item->ProductName ?? 'N/A' }}" class="h-50 w-60 rounded-lg object-cover" />
-                            </div>
-                            {{-- Bag Card Labels --}}
-                            <div class="flex w-full flex-col gap-1">
-                                <div class="flex w-full justify-between">
-                                    <h3 class="font-Primary text-3xl font-bold">{{ $item->ProductName ?? 'N/A' }}</h3>
-                                    <form method="POST" action="{{ route('cart.delete', $item->cartID) }}"
-                                        class="delete-cart-item-form" style="display:inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="delete-cart-btn transition hover:text-red-600 focus:outline-none active:scale-90"
-                                            title="Remove from bag">
-                                            <i class="fa-regular fa-trash-can pointer-events-none text-2xl"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="flex w-full justify-between">
-                                    <h3 class="font-Primary text-lg font-medium">Size: <span
-                                            class="font-Primary text-md">{{ $item->CupSize ?? 'N/A' }}</span></h3>
-                                    <span
-                                        class="font-Primary text-md font-medium">₱{{ $item->CupSizePrice !== null ? number_format($item->CupSizePrice, 2) : 'N/A' }}</span>
-                                </div>
-                                <div class="flex w-full justify-between">
-                                    <h3 class="font-Primary text-lg font-medium">Milk Options: <span
-                                            class="font-Primary text-md">{{ $item->Milk ?? 'N/A' }}</span></h3>
-                                    <span
-                                        class="font-Primary text-md font-medium">₱{{ $item->MilkPrice !== null ? number_format($item->MilkPrice, 2) : 'N/A' }}</span>
-                                </div>
-                                <div class="flex w-full justify-between">
-                                    <h3 class="font-Primary text-lg font-medium">Add Ons: <span
-                                            class="font-Primary text-md">{{ $item->Addon ?? 'N/A' }}</span></h3>
-                                    <span
-                                        class="font-Primary text-md font-medium">₱{{ $item->AddonPrice !== null ? number_format($item->AddonPrice, 2) : 'N/A' }}</span>
-                                </div>
-                                <div class="flex w-full justify-between">
-                                    <h3 class="font-Primary text-lg font-medium">Product Price: <span
-                                            class="font-Primary text-md">{{ $item->ProdPrice ?? 'N/A' }}</span></h3>
-                                    <span
-                                        class="font-Primary text-md font-medium">₱{{ $item->ProdPrice !== null ? number_format($item->ProdPrice, 2) : 'N/A' }}</span>
-                                </div>
-                                <div class="flex w-full justify-between">
-                                    <h3 class="font-Primary text-lg font-medium">Quantity: <span
-                                            class="font-Primary text-md">{{ $item->Quantity ?? 'N/A' }}</span></h3>
-                                </div>
-                                <div class="flex w-full justify-end">
-                                    <h3 class="font-Primary text-2xl font-bold">Total: <span
-                                            class="font-Primary text-txtHighlighted text-2xl">₱{{ $item->TotalPrice !== null ? number_format($item->TotalPrice, 2) : 'N/A' }}</span>
-                                    </h3>
-                                </div>
-                            </div>
-                            {{-- End of Bag Card --}}
+                    @if ($cartItems->isEmpty())
+                        <div class="flex w-full items-center justify-center p-4">
+                            <p class="text-txtSecondary text-lg font-medium">Your bag is empty.</p>
                         </div>
-                    @endforeach
+                    @else
+                        @foreach ($cartItems as $item)
+                            <div class="bg-bgColor flex w-full gap-3 rounded-md p-4 shadow-sm">
+                                <div>
+                                    <img src="{{ $item->ImagePath ?? asset('images/best_seller1.png') }}"
+                                        alt="{{ $item->ProductName ?? 'N/A' }}"
+                                        class="h-50 w-60 rounded-lg object-cover" />
+                                </div>
+                                {{-- Bag Card Labels --}}
+                                <div class="flex w-full flex-col gap-1">
+                                    <div class="flex w-full justify-between">
+                                        <h3 class="font-Primary text-3xl font-bold">{{ $item->ProductName ?? 'N/A' }}
+                                        </h3>
+                                        <form method="POST" action="{{ route('cart.delete', $item->cartID) }}"
+                                            class="delete-cart-item-form" style="display:inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="delete-cart-btn transition hover:text-red-600 focus:outline-none active:scale-90"
+                                                title="Remove from bag">
+                                                <i class="fa-regular fa-trash-can pointer-events-none text-2xl"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="flex w-full justify-between">
+                                        <h3 class="font-Primary text-lg font-medium">Size: <span
+                                                class="font-Primary text-md">{{ $item->CupSize ?? 'N/A' }}</span></h3>
+                                        <span
+                                            class="font-Primary text-md font-medium">₱{{ $item->CupSizePrice !== null ? number_format($item->CupSizePrice, 2) : 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex w-full justify-between">
+                                        <h3 class="font-Primary text-lg font-medium">Milk Options: <span
+                                                class="font-Primary text-md">{{ $item->Milk ?? 'N/A' }}</span></h3>
+                                        <span
+                                            class="font-Primary text-md font-medium">₱{{ $item->MilkPrice !== null ? number_format($item->MilkPrice, 2) : 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex w-full justify-between">
+                                        <h3 class="font-Primary text-lg font-medium">Add Ons: <span
+                                                class="font-Primary text-md">{{ $item->Addon ?? 'N/A' }}</span></h3>
+                                        <span
+                                            class="font-Primary text-md font-medium">₱{{ $item->AddonPrice !== null ? number_format($item->AddonPrice, 2) : 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex w-full justify-between">
+                                        <h3 class="font-Primary text-lg font-medium">Product Price: <span
+                                                class="font-Primary text-md">{{ $item->ProdPrice ?? 'N/A' }}</span>
+                                        </h3>
+                                        <span
+                                            class="font-Primary text-md font-medium">₱{{ $item->ProdPrice !== null ? number_format($item->ProdPrice, 2) : 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex w-full justify-between">
+                                        <h3 class="font-Primary text-lg font-medium">Quantity: <span
+                                                class="font-Primary text-md">{{ $item->Quantity ?? 'N/A' }}</span></h3>
+                                    </div>
+                                    <div class="flex w-full justify-end">
+                                        <h3 class="font-Primary text-2xl font-bold">Total: <span
+                                                class="font-Primary text-txtHighlighted text-2xl">₱{{ $item->TotalPrice !== null ? number_format($item->TotalPrice, 2) : 'N/A' }}</span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                {{-- End of Bag Card --}}
+                            </div>
+                        @endforeach
+                    @endif
                 </div> <!-- End of Bag Items List -->
                 <!-- Sticky Total and Checkout Bar INSIDE main content -->
                 <div class="border-txtSecondary/40 flex w-full justify-end border-t bg-[#FFE4C2] px-6 py-3 shadow-lg md:px-12"
