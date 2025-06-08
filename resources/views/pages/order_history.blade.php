@@ -53,12 +53,14 @@
                         </a>
                     </li>
                 </ul>
-                <div class="flex">
-                    <button
-                        class="bg-txtHighlighted hover:bg-txtSecondary flex w-full items-center gap-3 rounded-md px-6 py-2 text-lg font-medium text-white transition">
-                        <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i>
-                        Logout
-                    </button>
+                <div>
+                    <form action="{{ route('logout') }}" method="POST" class="mt-8">
+                        @csrf
+                        <button type="submit"
+                            class="bg-btnColor font-Primary text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-2 text-lg font-bold transition duration-300 ease-in-out">
+                            <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i> Logout
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="no-scrollbar max-h-[80vh] overflow-y-auto md:col-span-5">
@@ -66,7 +68,7 @@
                 @php
                     use App\Models\Orders;
                     use Illuminate\Support\Facades\Auth;
-                    $orders = Orders::where('user_id', Auth::id())->get();
+                    $orders = Orders::where('user_id', Auth::id())->orderByDesc('PurchaseDate')->get();
                 @endphp
                 <div class="bg-bgLight rounded-md p-6 shadow-sm">
                     <h2 class="bg-bgColor sticky top-0 z-10 mb-4 rounded-t-md p-4 text-2xl font-bold backdrop-blur-sm">

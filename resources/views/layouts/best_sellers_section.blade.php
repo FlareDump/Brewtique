@@ -15,18 +15,18 @@
             </div>
             <div class="flex flex-wrap gap-2 sm:justify-center md:justify-end lg:justify-end">
                 <a href="#"
-                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Cold
+                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary pointer-events-none cursor-default rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Cold
                     Coffee</a>
                 <a href="#"
-                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Signature</a>
+                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary pointer-events-none cursor-default rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Signature</a>
                 <a href="#"
-                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Plant-Based
+                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary pointer-events-none cursor-default rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Plant-Based
                     Milk</a>
                 <a href="#"
-                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Espresso
+                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary pointer-events-none cursor-default rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Espresso
                     Shots</a>
                 <a href="#"
-                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Iced
+                    class="border-txtPrimary font-Primary hover:bg-txtPrimary hover:text-txtTertiary hover:border-txtTertiary pointer-events-none cursor-default rounded-xl border px-3 py-1 text-sm font-light transition-colors duration-200">Iced
                     Favorites</a>
             </div>
         </div>

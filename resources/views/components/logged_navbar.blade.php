@@ -15,9 +15,9 @@
         <!-- Navbar Links -->
         <ul class="font-Primary text-txtTertiary text-[16px] font-black md:flex md:gap-x-10 lg:flex lg:gap-x-20">
             <li><a href="/Home">Home</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="/Home#aboutus">About Us</a></li>
             <li><a href="/AllProducts">Products</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#footer">Contact</a></li>
         </ul>
 
         <!-- User Icon and Dropdown Menu -->
@@ -109,7 +109,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/Home#aboutus"
                         class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                         <i class="fa-solid fa-users text-2xl"></i> About Us
                     </a>
@@ -121,7 +121,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="#footer"
                         class="font-Primary text-txtSecondary hover:bg-btnColor hover:text-txtPrimary flex items-center gap-3 rounded-md px-4 py-3 text-lg transition-colors duration-200">
                         <i class="fa-solid fa-envelope text-2xl"></i> Contact
                     </a>

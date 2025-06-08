@@ -36,6 +36,21 @@
     .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
+        position: relative;
+    }
+    .no-scrollbar:hover {
+        scrollbar-width: thin;
+        scrollbar-color: #d78325 #FFECC9;
+    }
+    .no-scrollbar:hover::-webkit-scrollbar {
+        display: block;
+        width: 8px;
+        background: #FFECC9;
+        border-radius: 8px;
+    }
+    .no-scrollbar:hover::-webkit-scrollbar-thumb {
+        background: #d78325;
+        border-radius: 8px;
     }
     .product-nav-link.active{
         background-color: transparent;

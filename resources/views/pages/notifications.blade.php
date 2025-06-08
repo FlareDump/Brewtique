@@ -12,9 +12,10 @@
 
 
 <section class="font-Primary flex min-h-screen flex-col justify-between py-4 md:py-10">
-    <div class="h-full py-5 md:py-15 w-full px-4 md:px-10">
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
-            <div class="bg-bgColor flex h-full min-h-[400px] md:min-h-[600px] flex-col justify-between rounded-md p-5 shadow-sm">
+    <div class="md:py-15 h-full w-full px-4 py-5 md:px-10">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-6">
+            <div
+                class="bg-bgColor flex h-full min-h-[400px] flex-col justify-between rounded-md p-5 shadow-sm md:min-h-[600px]">
                 <ul class="flex flex-col gap-3 p-2">
                     <li>
                         <a href="/Dashboard/User"
@@ -52,55 +53,61 @@
                         </a>
                     </li>
                 </ul>
-                <div class="flex">
-                    <button
-                        class="bg-txtHighlighted hover:bg-txtSecondary flex w-full items-center gap-3 rounded-md px-6 py-2 text-lg font-medium text-white transition">
-                        <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i>
-                        Logout
-                    </button>
+                <div>
+                    <form action="{{ route('logout') }}" method="POST" class="mt-8">
+                        @csrf
+                        <button type="submit"
+                            class="bg-btnColor font-Primary text-txtPrimary hover:bg-btnColor2 flex w-full items-center gap-3 rounded-md px-4 py-2 text-lg font-bold transition duration-300 ease-in-out">
+                            <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i> Logout
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="md:col-span-5">
 
                 {{-- Notifications Content --}}
                 <div class="md:col-span-5">
-                    <div class="bg-bgLight p-4 md:p-6 rounded-md shadow-sm">
-                        <h2 class="text-xl md:text-2xl font-bold mb-5">Notifications</h2>
+                    <div class="bg-bgLight rounded-md p-4 shadow-sm md:p-6">
+                        <h2 class="mb-5 text-xl font-bold md:text-2xl">Notifications</h2>
                         <div class="space-y-4">
                             {{-- Notification 1 --}}
-                            <div class="flex items-center bg-bgLight p-3 md:p-4 rounded-md">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-yellow-200 rounded-full flex items-center justify-center mr-3 md:mr-4">
-                                    <i class="fas fa-gift text-yellow-600 text-sm md:text-base"></i>
+                            <div class="bg-bgLight flex items-center rounded-md p-3 md:p-4">
+                                <div
+                                    class="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-yellow-200 md:mr-4 md:h-10 md:w-10">
+                                    <i class="fas fa-gift text-sm text-yellow-600 md:text-base"></i>
                                 </div>
                                 <div class="flex-1 text-sm md:text-base">You have a new special offer!</div>
-                                <div class="text-gray-500 text-xs md:text-sm">2h ago</div>
+                                <div class="text-xs text-gray-500 md:text-sm">2h ago</div>
                             </div>
                             <hr class="border-gray-300">
                             {{-- Notification 2 --}}
-                            <div class="flex items-center bg-bgLight p-3 md:p-4 rounded-md">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-green-200 rounded-full flex items-center justify-center mr-3 md:mr-4">
-                                    <i class="fas fa-check text-green-600 text-sm md:text-base"></i>
+                            <div class="bg-bgLight flex items-center rounded-md p-3 md:p-4">
+                                <div
+                                    class="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-green-200 md:mr-4 md:h-10 md:w-10">
+                                    <i class="fas fa-check text-sm text-green-600 md:text-base"></i>
                                 </div>
                                 <div class="flex-1 text-sm md:text-base">Your order has been delivered</div>
-                                <div class="text-gray-500 text-xs md:text-sm">3 days ago</div>
+                                <div class="text-xs text-gray-500 md:text-sm">3 days ago</div>
                             </div>
                             <hr class="border-gray-300">
                             {{-- Notification 3 --}}
-                            <div class="flex items-center bg-bgLight p-3 md:p-4 rounded-md">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-200 rounded-full flex items-center justify-center mr-3 md:mr-4">
-                                    <i class="fas fa-truck text-blue-600 text-sm md:text-base"></i>
+                            <div class="bg-bgLight flex items-center rounded-md p-3 md:p-4">
+                                <div
+                                    class="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-blue-200 md:mr-4 md:h-10 md:w-10">
+                                    <i class="fas fa-truck text-sm text-blue-600 md:text-base"></i>
                                 </div>
                                 <div class="flex-1 text-sm md:text-base">Your order is on the way</div>
-                                <div class="text-gray-500 text-xs md:text-sm">3 days ago</div>
+                                <div class="text-xs text-gray-500 md:text-sm">3 days ago</div>
                             </div>
                             <hr class="border-gray-300">
                             {{-- Notification 4 --}}
-                            <div class="flex items-center bg-bgLight p-3 md:p-4 rounded-md">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-orange-200 rounded-full flex items-center justify-center mr-3 md:mr-4">
-                                    <i class="fas fa-percent text-orange-600 text-sm md:text-base"></i>
+                            <div class="bg-bgLight flex items-center rounded-md p-3 md:p-4">
+                                <div
+                                    class="mr-3 flex h-8 w-8 items-center justify-center rounded-full bg-orange-200 md:mr-4 md:h-10 md:w-10">
+                                    <i class="fas fa-percent text-sm text-orange-600 md:text-base"></i>
                                 </div>
                                 <div class="flex-1 text-sm md:text-base">Get 20% off with your first order!</div>
-                                <div class="text-gray-500 text-xs md:text-sm">1 week ago</div>
+                                <div class="text-xs text-gray-500 md:text-sm">1 week ago</div>
                             </div>
                         </div>
                     </div>
@@ -110,4 +117,3 @@
     </div>
 </section>
 @include('layouts.footer_section')
-

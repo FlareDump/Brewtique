@@ -49,7 +49,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="flex">
+                <div>
                     <form action="{{ route('logout') }}" method="POST" class="mt-8">
                         @csrf
                         <button type="submit"
@@ -139,28 +139,48 @@
                     </div>
                 </form>
             </div>
+            {{-- Bag Section --}}
+            @php
+                use App\Models\Cart;
+                use Illuminate\Support\Facades\Auth;
+                $miniCartItems = Cart::where('user_id', Auth::id())->orderByDesc('AddedAt')->get(); // removed take(3)
+                $miniCartTotal = Cart::where('user_id', Auth::id())->sum('TotalPrice');
+            @endphp
             <div
-                class="bg-bgColor col-start-1 mt-6 flex h-full min-h-[400px] flex-col justify-between rounded-md p-5 shadow-sm md:col-span-2 md:col-start-5 md:mt-0 md:min-h-[600px]">
+                class="bg-bgColor col-start-1 mt-6 flex h-full flex-col justify-between rounded-md p-5 shadow-sm md:col-span-2 md:col-start-5 md:mt-0">
                 <!-- Header -->
                 <div class="mb-4 flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <i class="fa-solid fa-bag-shopping text-2xl"></i>
                         <span class="text-xl font-bold">Your Bag</span>
                     </div>
-                    <a href="#" class="text-txtSecondary text-sm font-medium hover:underline">View More..</a>
+                    <a href="/Dashboard/My-Bag" class="text-txtSecondary text-sm font-medium hover:underline">View
+                        More..</a>
                 </div>
                 <!-- Bag Item Card -->
-                <div class="bg-txtHighlighted/30 mb-8 flex items-center gap-4 rounded-xl p-3">
-                    <img src="/images/best_seller1.png" alt="Mocha Vanilla Frappe"
-                        class="h-16 w-16 rounded-lg object-cover">
-                    <div class="flex flex-1 flex-col">
-                        <span class="text-txtSecondary font-bold leading-tight">Mocha Vanilla</span>
-                        <span class="text-txtSecondary text-sm leading-tight">Frappe</span>
-                    </div>
-                    <div class="flex flex-col items-end gap-2">
-                        <span class="text-txtHighlighted text-lg font-bold">₱150.00</span>
-                        <span class="text-txtSecondary text-xs">1x</span>
-                    </div>
+                <div class="no-scrollbar flex h-full max-h-[55vh] flex-col gap-4 overflow-y-auto">
+                    @if ($miniCartItems->isEmpty())
+                        <div class="text-txtSecondary py-8 text-center">Your bag is empty.</div>
+                    @else
+                        @foreach ($miniCartItems as $item)
+                            <div class="bg-txtHighlighted/30 flex items-center gap-4 rounded-xl p-3">
+                                <img src="{{ $item->ImagePath ?? asset('images/best_seller1.png') }}"
+                                    alt="{{ $item->ProductName ?? 'N/A' }}"
+                                    class="h-16 w-16 rounded-lg object-cover">
+                                <div class="flex flex-1 flex-col">
+                                    <span
+                                        class="text-txtSecondary font-bold leading-tight">{{ $item->ProductName ?? 'N/A' }}</span>
+                                    <span class="text-txtSecondary text-sm leading-tight">Quantity:
+                                        {{ $item->Quantity ?? 1 }}</span>
+                                </div>
+                                <div class="flex flex-col items-end gap-2">
+                                    <span
+                                        class="text-txtHighlighted text-lg font-bold">₱{{ $item->TotalPrice !== null ? number_format($item->TotalPrice, 2) : 'N/A' }}</span>
+                                    <span class="text-txtSecondary text-xs">x{{ $item->Quantity ?? 1 }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                 <!-- Spacer -->
                 <div class="flex-1"></div>
@@ -168,10 +188,26 @@
                 <div class="mt-4">
                     <div class="border-txtSecondary/40 mb-2 flex items-center justify-between border-t pt-4">
                         <span class="text-lg font-bold">Total</span>
-                        <span class="text-txtHighlighted text-lg font-bold">₱150.00</span>
+                        <span
+                            class="text-txtHighlighted text-lg font-bold">₱{{ number_format($miniCartTotal, 2) }}</span>
                     </div>
-                    <button
-                        class="bg-txtHighlighted hover:bg-txtSecondary mt-2 w-full rounded-md py-2 text-lg font-medium text-white transition">Checkout</button>
+                    <form id="miniCheckoutForm" method="POST" action="/checkout-cart">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                        <button id="miniCheckoutBtn"
+                            class="bg-txtHighlighted hover:bg-txtSecondary mt-2 w-full rounded-md py-2 text-lg font-medium text-white transition">Checkout</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Mini Order Success Modal -->
+            <div id="miniOrderSuccessModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40">
+                <div class="flex flex-col items-center justify-center rounded-xl bg-[#FDECCB] px-8 py-10 shadow-xl">
+                    <div class="mb-4">
+                        <span class="bg-txtHighlighted flex h-20 w-20 items-center justify-center rounded-full">
+                            <i class="fa-solid fa-circle-check text-4xl text-white"></i>
+                        </span>
+                    </div>
+                    <div class="mb-4 text-center text-2xl font-bold text-black">Ordered successfully!</div>
                 </div>
             </div>
         </div>
@@ -194,6 +230,78 @@
     </div>
 </div>
 
+<!-- Checkout Confirmation Modal -->
+<div id="checkoutConfirmModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40">
+    <div
+        class="pointer-events-auto flex flex-col items-center justify-center rounded-xl bg-[#FDECCB] px-8 py-10 shadow-xl">
+        <div class="mb-4">
+            <span class="bg-txtHighlighted flex h-20 w-20 items-center justify-center rounded-full">
+                <i class="fa-solid fa-bag-shopping text-4xl text-white"></i>
+            </span>
+        </div>
+        <div class="mb-4 text-center text-xl font-semibold text-black">Confirm your order?</div>
+        <div class="flex gap-4">
+            <button id="checkoutCancelBtn"
+                class="bg-txtPrimary rounded px-6 py-2 font-bold text-black hover:bg-gray-200">Cancel</button>
+            <button
+                class="checkout-confirm-btn bg-btnColor hover:bg-txtHighlighted rounded px-6 py-2 font-bold text-white">Confirm</button>
+        </div>
+    </div>
+</div>
+
 @vite('resources/js/app.js')
 
 <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const miniCheckoutBtn = document.getElementById('miniCheckoutBtn');
+        const miniCheckoutForm = document.getElementById('miniCheckoutForm');
+        const checkoutModal = document.getElementById('checkoutConfirmModal');
+        const miniOrderSuccessModal = document.getElementById('miniOrderSuccessModal');
+        const checkoutCancelBtn = document.getElementById('checkoutCancelBtn');
+        if (miniCheckoutBtn && checkoutModal) {
+            miniCheckoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                checkoutModal.classList.remove('hidden');
+                checkoutModal.classList.add('flex');
+            });
+        }
+        document.querySelectorAll('.checkout-confirm-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                fetch('/checkout-cart', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')
+                                .content,
+                            'Accept': 'application/json',
+                        },
+                        body: new FormData(miniCheckoutForm)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            if (miniOrderSuccessModal) {
+                                miniOrderSuccessModal.classList.remove('hidden');
+                                miniOrderSuccessModal.classList.add('flex');
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1500);
+                            } else {
+                                window.location.reload();
+                            }
+                        } else {
+                            alert('Checkout failed.');
+                        }
+                    });
+                checkoutModal.classList.add('hidden');
+                checkoutModal.classList.remove('flex');
+            });
+        });
+        if (checkoutCancelBtn) {
+            checkoutCancelBtn.addEventListener('click', function() {
+                checkoutModal.classList.add('hidden');
+                checkoutModal.classList.remove('flex');
+            });
+        }
+    });
+</script>

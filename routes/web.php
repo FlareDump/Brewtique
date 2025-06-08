@@ -22,7 +22,7 @@ Route::get('/Dashboard/Order-History', [PageController::class, 'orderHistory']);
 Route::get('/Dashboard/My-Bag', [PageController::class, 'mybag']);
 Route::get('/Dashboard/Notifications', [PageController::class, 'notification']);
 Route::get('/Dashboard/Vouchers', [PageController::class, 'voucher']);
-Route::get('/Splash', [PageController::class, 'splashscreen']);
+Route::get('/Splash', [PageController::class, 'splashscreen'])->name('splashscreen');
 
 Route::post('/SignIn', [UserController::class, 'signinPost']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');

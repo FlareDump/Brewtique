@@ -1,6 +1,4 @@
- 
-
-<section class="min-h-screen py-10">
+<section id="aboutus" class="min-h-screen py-10">
     <div class="flex min-h-screen flex-col items-center justify-center md:flex-row lg:flex-row">
         <div class="mb-8 flex flex-1 justify-center md:mb-0">
             <div x-data="{

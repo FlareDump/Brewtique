@@ -1,4 +1,4 @@
-<section class="bg-footerBg mt-1 pt-10">
+<section id="footer" class="bg-footerBg mt-1 pt-10">
     <div class="flex flex-col items-center justify-around gap-10 pb-10 md:flex-row lg:flex-row">
         <div>
             <h2 class="text-txtPrimary font-Primary text-xl font-bold">WE'RE JUST A SIP AWAY</h2>
@@ -51,17 +51,20 @@
         <div>
             <ul class="flex flex-col items-center gap-5 font-bold md:flex-row md:gap-20">
                 <li>&#x2117; 2025 Brewtique. All rights reserve</li>
-                <li><a href="/ProductsPage">Products</a> </li>
-                <li>About Us</li>
+                <li><a href="{{ auth()->check() ? route('all.products') : route('splashscreen') }}">Products</a> </li>
+                <li><a href="/Home#aboutus">About Us</a></li>
             </ul>
         </div>
         <div>
             <ul class="flex justify-center gap-5 md:justify-end">
                 <li>
-                    <i class="fa-brands fa-instagram fa-2xl"></i>
+                    <a href="https://www.instagram.com/brewtiqueph?igsh=MWVyYjRzZjh0bWVhdg=="><i
+                            class="fa-brands fa-instagram fa-2xl"></i></a>
                 </li>
                 <li>
-                    <i class="fa-brands fa-square-facebook fa-2xl"></i>
+                    <a href="https://web.facebook.com/profile.php?id=61561929292897"><i
+                            class="fa-brands fa-square-facebook fa-2xl"></i></a>
+
                 </li>
             </ul>
         </div>
