@@ -89,13 +89,20 @@
             <h1 class="font-TitleFont text-txtTertiary text-lg font-black">Brewtique</h1>
         </a>
         <div class="flex items-center gap-4 pr-5">
+            <!-- User Icon Button for Dropdown -->
+            <button id="user-menu-mobile-btn"
+                class="bg-btnColor hover:bg-btnColor/80 group relative flex items-center justify-center rounded-2xl px-5 py-5 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <span class="absolute -right-1 -top-1 flex h-3 w-3">
+                    <span
+                        class="bg-txtHighlighted absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+                    <span class="bg-txtHighlighted relative inline-flex h-3 w-3 rounded-full"></span>
+                </span>
+                <i
+                    class="fa-solid fa-circle-user fa-2xl text-white transition-colors duration-200 group-hover:text-white"></i>
+            </button>
             <!-- Burger Menu Button -->
             <button id="burger" onclick="toggleMenu()">
                 <i id="menu-icon" class="fa-solid fa-bars fa-2xl"></i>
-            </button>
-            <!-- User Icon Button for Dropdown -->
-            <button id="user-menu-mobile-btn">
-                <i class="fa-solid fa-circle-user fa-2xl"></i>
             </button>
         </div>
     </div>
